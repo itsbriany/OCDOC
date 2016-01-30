@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-include '../models/person.php';
+include '../models/player.php';
 // connection info
 $servername = "localhost";
 $username = "ocdoc";
