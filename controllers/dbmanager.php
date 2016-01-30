@@ -8,6 +8,7 @@ class DBManager {
   private $playerID = 0;
   private $turnID = 0;
   private $name = 0;
+  private $location = 0;
   // task data
   private $todo = array();
   private $completed = array();
@@ -26,6 +27,7 @@ class DBManager {
       $this->playerID = (int)$row["Player_ID"];
       $this->turnID = (int)$row["Turn_ID"];
       $this->name = $row["Name"];
+      $this->location = $row["Location"];
     }
 
     $this->todo = array();
@@ -47,6 +49,18 @@ class DBManager {
 
   public function getTODO() {
     return $this->todolist;
+  }
+
+  public function getName() {
+    return $this->name;
+  }
+
+  public function getLocation() {
+    return $this->location;
+  }
+
+  public function setLocation($location) {
+    $this->location = $location
   }
 
   /**
