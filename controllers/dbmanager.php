@@ -13,7 +13,7 @@ class DBManager {
   private $completed = array();
 
   public function __construct($conn) {
-    $this->conn = $conn; 
+    $this->conn = $conn;
   }
 
   public function setPlayer($id) {
@@ -21,22 +21,32 @@ class DBManager {
     $sql = "SELECT * FROM Players WHERE PlayerID = " . $id . ";";
     $result = $conn->query($sql);
 
+
     if ($result->num_rows > 0) {
       $this->playerID = (int)$row["PlayerID"];
       $this->turnID = (int)$row["TurnID"];
       $this->stamina = (int)$row["Stamina"];
     }
 
-    return $this->platerID;
+    $this->todo = array();
+
+    if ($this->playerID !== 0) {
+      $sql = "SELECT Task_ID FROM TBLTODO WHERE Player_ID = " . $id . ";";
+      $result = $conn->query($sql);
+      while ($row = $result->fetch_assoc()) {
+        array_push($row["Task_ID"]);
+      }
+    }
+    return $this->playerID;
 
   }
 
   public function getTurnId() {
-    // $sql = "SELECT TurnID FROM Players WHERE Player "
+    return $this->turnID;
   }
 
   public function getTODO() {
-
+    return $this->todolist;
   }
 
   /**
