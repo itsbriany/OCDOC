@@ -21,7 +21,7 @@ DROP TABLE IF EXISTS Tasks;
 DROP TABLE IF EXISTS TasksComplete;
 DROP TABLE IF EXISTS TaskLinks;
 DROP TABLE IF EXISTS TBLTime;
--- DROP TABLE IF EXISTS Players;
+DROP TABLE IF EXISTS TBLTODO;
 -- DROP TABLE IF EXISTS Players;
 -- DROP TABLE IF EXISTS Players;
 -- DROP TABLE IF EXISTS Players;
@@ -51,6 +51,19 @@ CREATE TABLE `TaskLinks` (
   `Player_ID` int(11) NOT NULL,
   `Task_ID` int(11) NOT NULL,
    PRIMARY KEY (TaskLinkID)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `TBLTODO`
+--
+
+CREATE TABLE `TBLTODO` (
+  `TODOID` int(11) NOT NULL AUTO_INCREMENT,
+  `Player_ID` int(11) NOT NULL,
+  `Task_ID` int(11) NOT NULL,
+  PRIMARY KEY (TODOID)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
