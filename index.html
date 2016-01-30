@@ -1,19 +1,29 @@
+<!doctype html>
 <html>
-    <head>
+<head>
 
-        <!-- Bootstrap -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
 
-        <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
-    </head>
+    <link rel="stylesheet" href="/assets/css/main.css">
 
-<body>
+</head>
 
-    <div class="container-fluid">
+<body ng-app="OfficeCrawler">
 
-    </div>
+<div class="mobile-wrapper container-fluid mainContainer">
+    <div ng-view=""></div>
+</div>
 
+<script src="node_modules/jquery/src/jquery.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="node_modules/angular/angular.js"></script>
+<script src="node_modules/angular-route/angular-route.js"></script>
+
+<script src="/assets/scripts/app.js"></script>
 </body>
 
 </html>

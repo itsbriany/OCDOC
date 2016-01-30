@@ -1,0 +1,22 @@
+@font-face {
+    font-family: "Roboto Slab";
+    src: url(https://fonts.googleapis.com/css?family=Roboto+Slab);
+}
+.mainContainer{
+    font-family: "Roboto Slab";
+    background-color: #C9B582;
+    align-content: center;
+}
+.profileName{
+    text-align: center;
+}
+.profileIcon{
+    width: 86%;
+    height: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.profileJob{
+    text-align: center;
+}
