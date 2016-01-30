@@ -25,11 +25,13 @@ class DBManager {
 
   public function setPlayer($id) {
 
-    $sql = "SELECT PlayerID FROM Players WHERE PlayerID = " . $id . ";";
+    $sql = "SELECT * FROM Players WHERE PlayerID = " . $id . ";";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
       $this->playerID = (int)$row["PlayerID"];
+      $this->turnID = (int)$row["TurnID"];
+      $this->stamina = (int)$row["Stamina"];
     }
 
     return $this->platerID;
@@ -37,7 +39,7 @@ class DBManager {
   }
 
   public function getTurnId() {
-    $sql = "SELECT "
+    $sql = "SELECT TurnID FROM Players WHERE Player "
   }
 
   public function getTODO() {
