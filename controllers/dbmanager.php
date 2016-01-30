@@ -54,15 +54,11 @@ class DBManager {
    */
   public function fetchTaskList($npcID) {
       checkConnection();
-      $sql = "SELECT TaskLinkID FROM NPC WHERE ID = " . $npcID . ";";
+      $sql = "SELECT Task FROM Tasks LEFT JOIN NPC ON NPC.TaskLinkID = Tasks.TaskLinkID";
       $result = $conn->query($sql);
-      $taskLinkID = "";
       while ($row = $conn->fetch_assoc()) {
-        $taskLinkID = $result["TaskLinkID"];
-        echo $taskLinkID . "</br>";
+        echo $row . "</br>";
       }
-      $sql = "SELECT * FROM Tasks WHERE TaskLinkID = " . $taskLinkID . ";";
-
       /*
       while ($row = $conn->fetch_assoc()) {
           $task = new Task($row["Task"], $row["TaskConsumption"]);
