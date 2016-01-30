@@ -1,0 +1,44 @@
+<div class="mainContainer" ng-controller="RouteCtrl">
+    <div class="mainHeader">
+
+        <!--THIS IS WHERE THE DAY / HOUR IS SHOWN--------------------------------------------->
+        <div class="row">
+            <p class="col-xs-6 currentDay">Day:</p>
+
+            <p class="col-xs-6 currentHour"> Hour:</p>
+        </div>
+    </div>
+
+    <!--THIS IS WHERE THE ROOM DROP-DOWN IS ------------------------------------------------>
+    <div class="roomSelector">
+        <p class="roomSelectorText">What room are you in?</p>
+        <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle roomDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Rooms <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+                <li><a href="#">Lunch Room</a></li>
+                <li><a href="#">Secretary's Desk</a></li>
+                <li><a href="#">IT Guy's Dungeon</a></li>
+            </ul>
+
+        </div>
+    </div>
+
+    <!--THIS IS WHERE THE BUTTONS FOR OPTIONS ARE SHOWN--------------------------------------------->
+        <div class="btn-group-vertical mainBody">
+            <button type="button" class="btn userOptions" data-toggle="modal" data-target=".option">Option #1</button>
+            <button type="button" class="btn userOptions" data-toggle="modal" data-target=".option">Option #2</button>
+            <button type="button" class="btn userOptions" data-toggle="modal" data-target=".option">Option #3</button>
+        </div>
+
+    <div class="mainFooter">
+        <p class="userMinutes">You have ___ minutes left.</p>
+
+        <!--THIS BUTTON TAKES YOU TO THE INFO PAGE FOR YOUR CHARACTER--------------------------------------------->
+        <button class="btn infoButton" type="button" ng-click="go('/profile')">Player Info</button>
+        <!--THIS BUTTON SHOULD END YOUR TURN--------------------------------------------->
+        <button class="btn btn-danger" type="button">End Turn</button>
+    </div>
+</div>
