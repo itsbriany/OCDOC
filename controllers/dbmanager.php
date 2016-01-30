@@ -2,7 +2,10 @@
 class DBManager {
 
   // conection data
-  private $conn = null;
+  private $servername = "localhost";
+  private $username = "ocdoc";
+  private $password = "password";
+  private $dbname = "ocdoc";
 
   // data vars
   private $playerID = 0;
@@ -12,9 +15,6 @@ class DBManager {
   private $todo = array();
   private $completed = array();
 
-  public function __construct($conn) {
-    $this->conn = $conn;
-  }
 
   public function setPlayer($id) {
 
@@ -52,30 +52,62 @@ class DBManager {
   /**
    *  Fetches the tasks from a room based off the npc that is in that room
    */
-  public function fetchTaskList($npcID) {
-      checkConnection();
-    // SELECT * FROM Tasks LEFT JOIN NPC ON NPC.TaskLink_ID = Tasks.TaskLink_ID WHERE Tasks.TaskLink_ID = "SecretaryTask" AND Tasks.Req_Room = 4
-      $sql = "SELECT Task FROM Tasks LEFT JOIN NPC ON NPC.TaskLink_ID = Tasks.TaskLink_ID";
-      $result = $conn->query($sql);
-      while ($row = $conn->fetch_assoc()) {
-        echo $row . "</br>";
+  public function fetchTaskList($location) {
+      $conn = $this->openConnection();
+      // $sql = "SELECT * FROM Tasks LEFT JOIN NPC ON NPC.TaskLink_ID = Tasks.TaskLink_ID WHERE Tasks.TaskLink_ID = `SecretaryTask` AND Tasks.Req_Room = 4";
+      $taskListID = $this->findTaskListID($conn, $location);
+      if (!$taskListID) {
+        echo "Could not fetch task list ID"; 
+        $this->closeConnection($conn); 
+        return;
       }
-      /*
-      while ($row = $conn->fetch_assoc()) {
-          $task = new Task($row["Task"], $row["TaskConsumption"]);
-          //
-          $conn->close();
-          return $task;
+      $sql = "SELECT * FROM Tasks LEFT JOIN NPC ON NPC.TaskLink_ID = Tasks.TaskLink_ID WHERE Tasks.TaskLink_ID = " . $taskListID . " AND Tasks.Req_Room =" . $location . ";";
+      if ($result = $conn->query($sql)) {
+        while ($row = $result->fetch_assoc()) {
+          echo $row["Task"] . "</br>";
+        }
       }
-       */
+      $this->closeConnection($conn); 
   }
 
-  private function checkConnection() {
-      if ($this->conn->connect_errno) {
-          // die ("Connect failed: %s\n", $conn->connect_error);
-      }
+  private function findTaskListID($conn, $location) {
+    $sql = "SELECT TaskLink_ID FROM NPC WHERE Location = " . $location . ";";
+    if (!$result = $conn->query($sql)) {
+      return;
+    }
+    while ($row = $result->fetch_assoc()) {
+    
+    }
+    $taskListID = $row["TaskList_ID "]; 
+    return $taskListID;
   }
 
-  // Task options are necessary
+  /**
+   *  @return The mysqli connection object
+   */
+  public function openConnection() {
+    $conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
+    if ($conn->connect_error) {
+      $this->errorMsg($conn);
+    }
+    echo "Connected successfully</br>";
+    return $conn;
+  }
+
+  private function closeConnection($conn) {
+    if (!$conn->close()) {
+      $this->errorMsg($conn);
+    } 
+    echo "closing connection </br>";
+  }
+
+  /**
+   *  @param $conn The mysqli connection object
+   */
+  private function errorMsg($conn) {
+    die ("Failed to close connection: ". $conn->connect_errno . "</br>"); 
+  }
+
+  
 }
 ?>
