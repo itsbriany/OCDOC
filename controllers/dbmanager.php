@@ -53,10 +53,12 @@ class DBManager {
    *  Fetches the tasks from a room based off the npc that is in that room
    */
   public function fetchTaskList($npcID) {
-      checkConnection();
-      $sql = "SELECT Task FROM Tasks LEFT JOIN NPC ON NPC.TaskLinkID = Tasks.TaskLinkID";
-      $result = $conn->query($sql);
-      while ($row = $conn->fetch_assoc()) {
+      $this->checkConnection();
+      // $sql = "SELECT Task FROM Tasks LEFT JOIN NPC ON NPC.TaskLinkID = Tasks.TaskLinkID";
+      $sql = "SELECT * FROM *;";
+      $result = $this->conn->query($sql);
+      var_dump($result);
+      while ($row = $result->fetch_assoc()) {
         echo $row . "</br>";
       }
       /*
