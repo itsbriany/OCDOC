@@ -1,22 +1,35 @@
 <?php
 class Person {
 
-  $stamina = 100;
+  private $stamina = 100;
+  private $todoList = array();
+  private $complete = true;
 
-  protected function move() {
+  public function move() {
 
   }
 
-  protected function addStam($ammount) {
-    $stamina += $ammount;
+  public function addStam($ammount) {
+    $this->stamina += $ammount;
   }
 
-  protected function removeStam($ammount) {
-    $stamina -= $ammount;
+  public function removeStam($ammount) {
+    $this->stamina -= $ammount;
   }
 
-  protected function checkTODO() {
+  public function setTODO($list) {
+    $this->todoList = $list;
+  }
 
+  public function checkTODO($list) {
+    $test = false;
+    foreach ($this->todoList as $value) {
+      if (!in_array($value, $list)) {
+        $test = false;
+      }
+    }
+    //echo $this->complete;
+    return $test;
   }
 
 }
