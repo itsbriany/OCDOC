@@ -18,13 +18,13 @@ class DBManager {
 
   public function setPlayer($id) {
 
-    $sql = "SELECT * FROM Players WHERE PlayerID = " . $id . ";";
+    $sql = "SELECT * FROM Players WHERE Player_ID = " . $id . ";";
     $result = $conn->query($sql);
 
 
     if ($result->num_rows > 0) {
-      $this->playerID = (int)$row["PlayerID"];
-      $this->turnID = (int)$row["TurnID"];
+      $this->playerID = (int)$row["Player_ID"];
+      $this->turnID = (int)$row["Turn_ID"];
       $this->name = $row["Name"];
     }
 
@@ -53,12 +53,11 @@ class DBManager {
    *  Fetches the tasks from a room based off the npc that is in that room
    */
   public function fetchTaskList($npcID) {
-      $this->checkConnection();
-      // $sql = "SELECT Task FROM Tasks LEFT JOIN NPC ON NPC.TaskLinkID = Tasks.TaskLinkID";
-      $sql = "SELECT * FROM *;";
-      $result = $this->conn->query($sql);
-      var_dump($result);
-      while ($row = $result->fetch_assoc()) {
+      checkConnection();
+    // SELECT * FROM Tasks LEFT JOIN NPC ON NPC.TaskLink_ID = Tasks.TaskLink_ID WHERE Tasks.TaskLink_ID = "SecretaryTask" AND Tasks.Req_Room = 4
+      $sql = "SELECT Task FROM Tasks LEFT JOIN NPC ON NPC.TaskLink_ID = Tasks.TaskLink_ID";
+      $result = $conn->query($sql);
+      while ($row = $conn->fetch_assoc()) {
         echo $row . "</br>";
       }
       /*
