@@ -44,14 +44,28 @@ class DBManager {
 
   }
 
-  public function getTask($taskID) {
+  /**
+   *  Fetches the tasks from a room based off the npc that is in that room
+   */
+  public function fetchTaskList($npcID) {
       checkConnection();
-      $sql = "SELECT Task, TimeConsumption FROM Tasks WHERE TaskID = " . $taskID . ";";
+      $sql = "SELECT TaskLinkID FROM NPC WHERE ID = " . $npcID . ";";
       $result = $conn->query($sql);
+      $taskLinkID = "";
+      while ($row = $conn->fetch_assoc()) {
+        $taskLinkID = $result["TaskLinkID"]; 
+        echo $taskLinkID . "</br>";
+      }
+      $sql = "SELECT * FROM Tasks WHERE TaskLinkID = " . $taskLinkID . ";";
+
+      /*
       while ($row = $conn->fetch_assoc()) {
           $task = new Task($row["Task"], $row["TaskConsumption"]);
+          // 
+          $conn->close();
           return $task;
       }
+       */
   }
 
   private function checkConnection() {
@@ -60,5 +74,7 @@ class DBManager {
           exit();
       }
   }
+
+  // Task options are necessary
 }
 ?>

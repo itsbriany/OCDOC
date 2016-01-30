@@ -21,9 +21,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `Players` (
-  `PlayerID` int(11) NOT NULL,
+  `PlayerID` int(11) NOT NULL AUTO_INCREMENT,
   `TurnID` int(11) NOT NULL,
-  `Stamina` int(11) NOT NULL
+  `Stamina` int(11) NOT NULL,
+   PRIMARY KEY (PlayerID)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -33,9 +34,10 @@ CREATE TABLE `Players` (
 --
 
 CREATE TABLE `TaskLinks` (
-  `TaskLinkID` int(11) NOT NULL,
+  `TaskLinkID` int(11) NOT NULL AUTO_INCREMENT,
   `Player_ID` int(11) NOT NULL,
-  `Task_ID` int(11) NOT NULL
+  `Task_ID` int(11) NOT NULL,
+   PRIMARY KEY (TaskLinkID)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -45,9 +47,10 @@ CREATE TABLE `TaskLinks` (
 --
 
 CREATE TABLE `Tasks` (
-  `TaskID` int(11) NOT NULL,
+  `TaskID` int(11) NOT NULL AUTO_INCREMENT,
   `Task` varchar(255) DEFAULT NULL,
-  `TimeConsumption` int(11) DEFAULT NULL
+  `TimeConsumption` int(11) DEFAULT NULL,
+   PRIMARY KEY (TaskID)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -57,9 +60,10 @@ CREATE TABLE `Tasks` (
 --
 
 CREATE TABLE `TasksComplete` (
-  `ID` int(11) NOT NULL,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `PlayerID` int(11) NOT NULL,
-  `TaskID` int(11) NOT NULL
+  `TaskID` int(11) NOT NULL,
+  PRIMARY KEY (ID)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -74,47 +78,11 @@ CREATE TABLE `Time` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Indexes for dumped tables
---
-
---
--- Indexes for table `Players`
---
-ALTER TABLE `Players`
-  ADD PRIMARY KEY (`PlayerID`);
-
---
 -- Indexes for table `TaskLinks`
 --
 ALTER TABLE `TaskLinks`
-  ADD PRIMARY KEY (`TaskLinkID`),
   ADD KEY `Player_ID` (`Player_ID`),
   ADD KEY `Task_ID` (`Task_ID`);
-
---
--- Indexes for table `Tasks`
---
-ALTER TABLE `Tasks`
-  ADD PRIMARY KEY (`TaskID`);
-
---
--- Indexes for table `TasksComplete`
---
-ALTER TABLE `TasksComplete`
-  ADD PRIMARY KEY (`ID`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `TasksComplete`
---
-ALTER TABLE `TasksComplete`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
---
--- Constraints for dumped tables
---
 
 --
 -- Constraints for table `TaskLinks`
