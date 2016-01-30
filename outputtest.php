@@ -30,7 +30,7 @@ array_push($testTODOCompleted, 4);
 array_push($testTODOCompleted, 5);
 
 // test for completed tasks
-echo $holder = ($testPerson->checkTODO($testTODOCompleted)) ? 'test one pass ' : 'test one fail ';
+echo $holder = ($testPerson->checkTODO($testTODOCompleted)) ? 'test one pass \n' : 'test one fail \n';
 
 // add all the required tasks and some extras
 array_push($testTODOCompleted, 0);
@@ -42,16 +42,16 @@ array_push($testTODOCompleted, 10);
 array_push($testTODOCompleted, 11);
 
 // second test for completed tasks
-echo $holder = ($testPerson->checkTODO($testTODOCompleted)) ? 'test two pass ' : 'test two fail ';
+echo $holder = ($testPerson->checkTODO($testTODOCompleted)) ? 'test two pass \n' : 'test two fail \n';
 
 // Create connection
 $conn = new mysqli($servername, $username, $password);
 
 // Check connection
 if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+  die("Connection failed: " . $conn->connect_error) . "\n";
 }
-echo "Connected successfully";
+echo "Connected successfully\n";
 
 
 ?>
