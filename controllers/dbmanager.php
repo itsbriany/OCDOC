@@ -18,13 +18,13 @@ class DBManager {
 
   public function setPlayer($id) {
 
-    $sql = "SELECT * FROM Players WHERE PlayerID = " . $id . ";";
+    $sql = "SELECT * FROM Players WHERE Player_ID = " . $id . ";";
     $result = $conn->query($sql);
 
 
     if ($result->num_rows > 0) {
-      $this->playerID = (int)$row["PlayerID"];
-      $this->turnID = (int)$row["TurnID"];
+      $this->playerID = (int)$row["Player_ID"];
+      $this->turnID = (int)$row["Turn_ID"];
       $this->name = $row["Name"];
     }
 
@@ -54,7 +54,8 @@ class DBManager {
    */
   public function fetchTaskList($npcID) {
       checkConnection();
-      $sql = "SELECT Task FROM Tasks LEFT JOIN NPC ON NPC.TaskLinkID = Tasks.TaskLinkID";
+    // SELECT * FROM Tasks LEFT JOIN NPC ON NPC.TaskLink_ID = Tasks.TaskLink_ID WHERE Tasks.TaskLink_ID = "SecretaryTask" AND Tasks.Req_Room = 4
+      $sql = "SELECT Task FROM Tasks LEFT JOIN NPC ON NPC.TaskLink_ID = Tasks.TaskLink_ID";
       $result = $conn->query($sql);
       while ($row = $conn->fetch_assoc()) {
         echo $row . "</br>";
