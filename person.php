@@ -3,18 +3,18 @@ class Person {
 
   private $stamina = 100;
   private $todoList = array();
-  private $complete = true;
+  private $complete = 0;
 
   public function move() {
 
   }
 
   public function addStam($ammount) {
-    $this->stamina += $ammount;
+    return $this->stamina += $ammount;
   }
 
   public function removeStam($ammount) {
-    $this->stamina -= $ammount;
+    return $this->stamina -= $ammount;
   }
 
   public function setTODO($list) {
@@ -23,13 +23,19 @@ class Person {
 
   public function checkTODO($list) {
     $test = true;
+    $matchCount = 0;
     foreach ($this->todoList as $value) {
       if (!in_array($value, $list)) {
-        return false;
+        $test = false;
+        $matchCount++;
       }
     }
+    $complete = ($matchCount / count($this->todoList)) * 100;
     return $test;
-    //echo $this->complete;
+  }
+
+  public function getCompleteRating() {
+    return $this->complete;
   }
 
 }
