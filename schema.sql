@@ -22,6 +22,7 @@ DROP TABLE IF EXISTS TasksComplete;
 DROP TABLE IF EXISTS TaskLinks;
 DROP TABLE IF EXISTS TBLTime;
 DROP TABLE IF EXISTS TBLTODO;
+DROP TABLE IF EXISTS NPC;
 
 -- --------------------------------------------------------
 
