@@ -45,10 +45,10 @@ CREATE TABLE `Players` (
 --
 
 CREATE TABLE `TaskLinks` (
-  `TaskLink_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `TaskList_ID` int(11) NOT NULL AUTO_INCREMENT,
   `Player_ID` int(11) NOT NULL,
   `Task_ID` int(11) NOT NULL,
-   PRIMARY KEY (TaskLink_ID)
+   PRIMARY KEY (TaskList_ID)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -75,7 +75,7 @@ CREATE TABLE `Tasks` (
   `Task` varchar(255) DEFAULT NULL,
   `Description` varchar(500) DEFAULT NULL,
   `TimeConsumption` int(11) DEFAULT NULL,
-  `TaskLink_ID` varchar(255) DEFAULT NULL,
+  `TaskList_ID` varchar(255) DEFAULT NULL,
   `Req_Task` int(11) DEFAULT NULL,
   `Req_Room` int(11) DEFAULT NULL,
    PRIMARY KEY (Task_ID)
@@ -113,7 +113,7 @@ CREATE TABLE `TBLTime` (
 
 CREATE TABLE `NPC` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `TaskLink_ID` varchar(255) NOT NULL,
+  `TaskList_ID` varchar(255) NOT NULL,
   `Name` varchar(255) NOT NULL,
   `Location` int(11) NOT NULL,
   PRIMARY KEY (ID)
@@ -139,7 +139,7 @@ VALUES
 --
 
 INSERT INTO Tasks
-    (Task, Description, TimeConsumption, TaskLink_ID, Req_Task, Req_Room)
+    (Task, Description, TimeConsumption, TaskList_ID, Req_Task, Req_Room)
 VALUES
     ("Get coffie","get some coffie for me please!", 15,"SecretaryTask", 0, 4),
     ("watch the office","can you please watch the office for me!", 60,"SecretaryTask", 0, 1),
@@ -154,7 +154,7 @@ VALUES
 --
 
 INSERT INTO NPC
-    (TaskLink_ID, Name, Location)
+    (TaskList_ID, Name, Location)
 VALUES
     ("SecretaryTask", "Secretary", 4),
     ("ITTask", "IT", 5),

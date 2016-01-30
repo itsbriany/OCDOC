@@ -60,40 +60,41 @@ class DBManager {
   }
 
   public function setLocation($location) {
-    $this->location = $location
+    $this->location = $location;
   }
 
   /**
    *  Fetches the tasks from a room based off the npc that is in that room
+   *  @return A two dimensional array representing the location's task list
    */
   public function fetchTaskList($location) {
       $conn = $this->openConnection();
-      // $sql = "SELECT * FROM Tasks LEFT JOIN NPC ON NPC.TaskLink_ID = Tasks.TaskLink_ID WHERE Tasks.TaskLink_ID = `SecretaryTask` AND Tasks.Req_Room = 4";
       $taskListID = $this->findTaskListID($conn, $location);
       if (!$taskListID) {
         echo "Could not fetch task list ID"; 
         $this->closeConnection($conn); 
         return;
       }
-      $sql = "SELECT * FROM Tasks LEFT JOIN NPC ON NPC.TaskLink_ID = Tasks.TaskLink_ID WHERE Tasks.TaskLink_ID = " . $taskListID . " AND Tasks.Req_Room =" . $location . ";";
+      $sql = "SELECT * FROM Tasks LEFT JOIN NPC ON NPC.TaskList_ID = Tasks.TaskList_ID WHERE Tasks.TaskList_ID = \"" . $taskListID . "\" AND Tasks.Req_Room = " . $location . ";";
       if ($result = $conn->query($sql)) {
+        $locationTaskList = array();
         while ($row = $result->fetch_assoc()) {
-          echo $row["Task"] . "</br>";
+          array_push($locationTaskList, $row);
         }
+        return $locationTaskList;
       }
       $this->closeConnection($conn); 
   }
 
   private function findTaskListID($conn, $location) {
-    $sql = "SELECT TaskLink_ID FROM NPC WHERE Location = " . $location . ";";
+    $sql = "SELECT TaskList_ID FROM NPC WHERE Location = " . $location . ";";
     if (!$result = $conn->query($sql)) {
       return;
     }
     while ($row = $result->fetch_assoc()) {
-    
+      $taskListID = $row["TaskList_ID"]; 
+      return $taskListID;
     }
-    $taskListID = $row["TaskList_ID "]; 
-    return $taskListID;
   }
 
   /**
@@ -121,7 +122,5 @@ class DBManager {
   private function errorMsg($conn) {
     die ("Failed to close connection: ". $conn->connect_errno . "</br>"); 
   }
-
-  
 }
 ?>
