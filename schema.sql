@@ -46,7 +46,8 @@ CREATE TABLE `TaskLinks` (
 
 CREATE TABLE `Tasks` (
   `TaskID` int(11) NOT NULL,
-  `Task` varchar(255) DEFAULT NULL
+  `Task` varchar(255) DEFAULT NULL,
+  `TimeConsumption` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
