@@ -58,8 +58,7 @@ class DBManager {
 
   private function checkConnection() {
       if ($this->conn->connect_errno) {
-          printf("Connect failed: %s\n", $mysqli->connect_error);
-          exit();
+          die ("Connect failed: %s\n", $mysqli->connect_error);
       }
   }
 }
