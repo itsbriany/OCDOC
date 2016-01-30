@@ -7,7 +7,7 @@ class DBManager {
   // data vars
   private $playerID = 0;
   private $turnID = 0;
-  private $stamina = 0;
+  private $name = 0;
   // task data
   private $todo = array();
   private $completed = array();
@@ -25,7 +25,7 @@ class DBManager {
     if ($result->num_rows > 0) {
       $this->playerID = (int)$row["PlayerID"];
       $this->turnID = (int)$row["TurnID"];
-      $this->stamina = (int)$row["Stamina"];
+      $this->name = $row["Name"];
     }
 
     $this->todo = array();

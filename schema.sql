@@ -22,6 +22,7 @@ DROP TABLE IF EXISTS TasksComplete;
 DROP TABLE IF EXISTS TaskLinks;
 DROP TABLE IF EXISTS TBLTime;
 DROP TABLE IF EXISTS TBLTODO;
+DROP TABLE IF EXISTS NPC;
 
 -- --------------------------------------------------------
 
@@ -32,7 +33,7 @@ DROP TABLE IF EXISTS TBLTODO;
 CREATE TABLE `Players` (
   `PlayerID` int(11) NOT NULL AUTO_INCREMENT,
   `TurnID` int(11) NOT NULL,
-  `Stamina` int(11) NOT NULL,
+  `Name` VARCHAR(50) NOT NULL,
    PRIMARY KEY (PlayerID)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
