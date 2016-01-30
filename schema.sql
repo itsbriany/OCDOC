@@ -22,10 +22,6 @@ DROP TABLE IF EXISTS TasksComplete;
 DROP TABLE IF EXISTS TaskLinks;
 DROP TABLE IF EXISTS TBLTime;
 DROP TABLE IF EXISTS TBLTODO;
--- DROP TABLE IF EXISTS Players;
--- DROP TABLE IF EXISTS Players;
--- DROP TABLE IF EXISTS Players;
--- DROP TABLE IF EXISTS Players;
 
 -- --------------------------------------------------------
 
@@ -76,6 +72,7 @@ CREATE TABLE `Tasks` (
   `TaskID` int(11) NOT NULL AUTO_INCREMENT,
   `Task` varchar(255) DEFAULT NULL,
   `TimeConsumption` int(11) DEFAULT NULL,
+  `TaskLinkID` int(11) DEFAULT NULL,
    PRIMARY KEY (TaskID)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -102,6 +99,19 @@ CREATE TABLE `TBLTime` (
   `Day` int(11) NOT NULL,
   `Hour` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+--
+-- Table structure for table `NPC`
+--
+
+CREATE TABLE `NPC` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `TaskLinkID` int(11) NOT NULL,
+  `Name` varchar(255) NOT NULL,
+  PRIMARY KEY (ID)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
 
 --
 -- Indexes for table `TaskLinks`
