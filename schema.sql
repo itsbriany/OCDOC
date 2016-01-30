@@ -16,6 +16,19 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
+DROP TABLE IF EXISTS Players;
+DROP TABLE IF EXISTS Tasks;
+DROP TABLE IF EXISTS TasksComplete;
+DROP TABLE IF EXISTS TaskLinks;
+DROP TABLE IF EXISTS TBLTime;
+-- DROP TABLE IF EXISTS Players;
+-- DROP TABLE IF EXISTS Players;
+-- DROP TABLE IF EXISTS Players;
+-- DROP TABLE IF EXISTS Players;
+-- DROP TABLE IF EXISTS Players;
+
+-- --------------------------------------------------------
+
 --
 -- Table structure for table `Players`
 --
@@ -72,7 +85,7 @@ CREATE TABLE `TasksComplete` (
 -- Table structure for table `Time`
 --
 
-CREATE TABLE `Time` (
+CREATE TABLE `TBLTime` (
   `Day` int(11) NOT NULL,
   `Hour` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -80,13 +93,13 @@ CREATE TABLE `Time` (
 --
 -- Indexes for table `TaskLinks`
 --
-ALTER TABLE `TaskLinks`
-  ADD KEY `Player_ID` (`Player_ID`),
-  ADD KEY `Task_ID` (`Task_ID`);
+-- ALTER TABLE `TaskLinks`
+  -- ADD KEY `Player_ID` (`Player_ID`),
+  -- ADD KEY `Task_ID` (`Task_ID`);
 
 --
 -- Constraints for table `TaskLinks`
 --
-ALTER TABLE `TaskLinks`
-  ADD CONSTRAINT `tasklinks_ibfk_1` FOREIGN KEY (`Player_ID`) REFERENCES `Players` (`PlayerID`),
-  ADD CONSTRAINT `tasklinks_ibfk_2` FOREIGN KEY (`Task_ID`) REFERENCES `Tasks` (`TaskID`);
+-- ALTER TABLE `TaskLinks`
+  -- ADD CONSTRAINT `tasklinks_ibfk_1` FOREIGN KEY (`Player_ID`) REFERENCES `Players` (`PlayerID`),
+  -- ADD CONSTRAINT `tasklinks_ibfk_2` FOREIGN KEY (`Task_ID`) REFERENCES `Tasks` (`TaskID`);

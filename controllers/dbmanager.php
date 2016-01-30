@@ -5,7 +5,8 @@ class DBManager {
   private $servername = "localhost";
   private $username = "ocdoc";
   private $password = "password";
-  private $conn = new mysqli($servername, $username, $password);
+  private $dbname = "ocdoc";
+  private $conn = new mysqli($servername, $username, $password, $dbname);
 
   // data vars
   private $playerID = 0;
@@ -55,7 +56,7 @@ class DBManager {
       $result = $conn->query($sql);
       $taskLinkID = "";
       while ($row = $conn->fetch_assoc()) {
-        $taskLinkID = $result["TaskLinkID"]; 
+        $taskLinkID = $result["TaskLinkID"];
         echo $taskLinkID . "</br>";
       }
       $sql = "SELECT * FROM Tasks WHERE TaskLinkID = " . $taskLinkID . ";";
@@ -63,7 +64,7 @@ class DBManager {
       /*
       while ($row = $conn->fetch_assoc()) {
           $task = new Task($row["Task"], $row["TaskConsumption"]);
-          // 
+          //
           $conn->close();
           return $task;
       }
