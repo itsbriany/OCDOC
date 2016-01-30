@@ -27,10 +27,12 @@ class Person {
     foreach ($this->todoList as $value) {
       if (!in_array($value, $list)) {
         $test = false;
+      } else {
         $matchCount++;
       }
     }
-    $complete = ($matchCount / count($this->todoList)) * 100;
+    count($this->todoList);
+    $this->complete = ($matchCount / count($this->todoList)) * 100;
     return $test;
   }
 

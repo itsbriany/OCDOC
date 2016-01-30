@@ -32,6 +32,8 @@ array_push($testTODOCompleted, 5);
 // test for completed tasks
 echo $holder = ($testPerson->checkTODO($testTODOCompleted)) ? 'test one pass </br>' : 'test one fail </br>';
 
+echo $testPerson->getCompleteRating() . "% match</br> ";
+
 // add all the required tasks and some extras
 array_push($testTODOCompleted, 0);
 array_push($testTODOCompleted, 6);
@@ -43,7 +45,7 @@ array_push($testTODOCompleted, 11);
 
 // second test for completed tasks
 echo $holder = ($testPerson->checkTODO($testTODOCompleted)) ? 'test two pass </br>' : 'test two fail </br>';
-
+echo $testPerson->getCompleteRating() . "% match</br> ";
 // Create connection
 $conn = new mysqli($servername, $username, $password);
 
