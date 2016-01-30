@@ -2,11 +2,7 @@
 class DBManager {
 
   // conection data
-  private $servername = "localhost";
-  private $username = "ocdoc";
-  private $password = "password";
-  private $dbname = "ocdoc";
-  private $conn = new mysqli($servername, $username, $password, $dbname);
+  private $conn = null;
 
   // data vars
   private $playerID = 0;
@@ -16,13 +12,9 @@ class DBManager {
   private $todo = array();
   private $completed = array();
 
-  // Check connection
-  if ($conn->connect_error) {
-    die ("Connection failed: " . $conn->connect_error) . "</br>";
+  public function __construct($conn) {
+    $this->conn = $conn; 
   }
-  echo "Connected successfully</br>";
-
-  $conn->close();
 
   public function setPlayer($id) {
 
@@ -40,7 +32,7 @@ class DBManager {
   }
 
   public function getTurnId() {
-    $sql = "SELECT TurnID FROM Players WHERE Player "
+    // $sql = "SELECT TurnID FROM Players WHERE Player "
   }
 
   public function getTODO() {
@@ -73,7 +65,7 @@ class DBManager {
 
   private function checkConnection() {
       if ($this->conn->connect_errno) {
-          die ("Connect failed: %s\n", $mysqli->connect_error);
+          // die ("Connect failed: %s\n", $conn->connect_error);
       }
   }
 
