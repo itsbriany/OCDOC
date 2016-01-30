@@ -1,19 +1,43 @@
-<div class="mainContainer">
+<div class="mainContainer" ng-controller="RouteCtrl">
     <div class="mainHeader">
-        <p class="currentDay">Day: ____</p>
-        <p class="currentHour">Hour: ____</p>
-        <p class="currentLocation"> You are: <span>here</span></p>
+
+        <!--THIS IS WHERE THE DAY / HOUR IS SHOWN--------------------------------------------->
+        <div class="row">
+            <p class="col-xs-6 currentDay">Day: ____</p>
+            <p class="col-xs-6 currentHour">Hour: ____</p>
+        </div>
     </div>
-    <div class="mainBody">
-        <ol>
-            <li>Option #1</li>
-            <li>Option #2</li>
-            <li>Option #3</li>
-        </ol>
+
+    <!--THIS IS WHERE THE ROOM DROP-DOWN IS ------------------------------------------------>
+    <div class="roomSelector">
+        <p class="roomSelectorText">What room are you in?</p>
+        <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Rooms <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+                <li><a href="#">Lunch Room</a></li>
+                <li><a href="#">Secretary's Desk</a></li>
+                <li><a href="#">IT Guy's Dungeon</a></li>
+            </ul>
+
+        </div>
     </div>
+
+    <!--THIS IS WHERE THE BUTTONS FOR OPTIONS ARE SHOWN--------------------------------------------->
+        <div class="btn-group-vertical userOptions userOptionsContainer">
+            <button type="button" class="btn ">Option #1</button>
+            <button type="button" class="btn ">Option #2</button>
+            <button type="button" class="btn ">Option #3</button>
+        </div>
+
     <div class="mainFooter">
         <p class="userMinutes">You have ___ minutes left.</p>
 
-        <button type="button" ng-href="/profile">Player Info</button>
+        <!--THIS BUTTON TAKES YOU TO THE INFO PAGE FOR YOUR CHARACTER--------------------------------------------->
+        <button class="btn infoButton" type="button" ng-click="go('/profile')">Player Info</button>
+        <!--THIS BUTTON SHOULD END YOUR TURN--------------------------------------------->
+        <button class="btn btn-danger" type="button">End Turn</button>
     </div>
 </div>
