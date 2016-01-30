@@ -4,7 +4,10 @@ angular.module('OfficeCrawler', ['ngRoute', 'angular-carousel'])
     .config(function ($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: '../../views/profile.html',
+                templateUrl: '../../views/main.html'
+            })
+            .when('/profile', {
+                templateUrl: '../../views/profile.html'
             })
             .otherwise({
                 redirectTo: '/'
