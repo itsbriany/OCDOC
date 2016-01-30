@@ -23,26 +23,28 @@
     text-align: center;
 }
 .mainHeader{
-
+    margin-top: 1%;
+    margin-bottom: 8%;
     font-family: 'Roboto', sans-serif;
     font-size: 24px;
 }
 .currentDay{
-
+    font-size: 38px;
+    padding-left: 5%;
 }
 .currentHour{
-
+    font-size: 38px;
+    border-left: 1px solid black;
 }
 .currentLocation{
 
 }
 .mainBody{
     width: 92%;
-    height: 300px;
     margin-left: auto;
     margin-right: auto;
-    background-color: palegoldenrod;
     border-radius: 15px;
+    margin-bottom: 5%;
 
 }
 .userOptionsContainer{
@@ -55,20 +57,28 @@
     padding: 8%;
     margin-left: auto;
     margin-right: auto;
+    background-color: palegoldenrod;
+    height: 100px;
 
 }
-.mainFooter{
-    
+.roomSelector{
+    margin-top: 39%;
+    margin-bottom: 50%;
+}
+.roomSelectorText{
+    font-size: 24px;
+    margin-bottom: 5%;
 }
 .userMinutes{
     margin-top: 2%;
-    margin-bottom: 2%;
+    margin-bottom: 4%;
     font-family: 'Roboto', serif;
-    font-weight: 100;
+    font-size: 20px;
+    font-weight: 100 !important;
 
 }
-.infoButton{
-
+.roomDropDown{
+    width: 92%;
 }
 
 /*PROFILE / INFO PAGE*/

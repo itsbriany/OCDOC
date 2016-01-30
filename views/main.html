@@ -3,8 +3,9 @@
 
         <!--THIS IS WHERE THE DAY / HOUR IS SHOWN--------------------------------------------->
         <div class="row">
-            <p class="col-xs-6 currentDay">Day: ____</p>
-            <p class="col-xs-6 currentHour">Hour: ____</p>
+            <p class="col-xs-6 currentDay">Day:</p>
+
+            <p class="col-xs-6 currentHour"> Hour:</p>
         </div>
     </div>
 
@@ -12,7 +13,7 @@
     <div class="roomSelector">
         <p class="roomSelectorText">What room are you in?</p>
         <div class="btn-group">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button type="button" class="btn btn-default dropdown-toggle roomDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Rooms <span class="caret"></span>
             </button>
 
@@ -26,10 +27,10 @@
     </div>
 
     <!--THIS IS WHERE THE BUTTONS FOR OPTIONS ARE SHOWN--------------------------------------------->
-        <div class="btn-group-vertical userOptions userOptionsContainer">
-            <button type="button" class="btn ">Option #1</button>
-            <button type="button" class="btn ">Option #2</button>
-            <button type="button" class="btn ">Option #3</button>
+        <div class="btn-group-vertical mainBody">
+            <button type="button" class="btn userOptions" data-toggle="modal" data-target=".option">Option #1</button>
+            <button type="button" class="btn userOptions" data-toggle="modal" data-target=".option">Option #2</button>
+            <button type="button" class="btn userOptions" data-toggle="modal" data-target=".option">Option #3</button>
         </div>
 
     <div class="mainFooter">
