@@ -1,5 +1,5 @@
 <?php
-class Person {
+class Player {
 
   private $stamina = 100;
   private $todoList = array();

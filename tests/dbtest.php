@@ -4,8 +4,11 @@
 
   $dbManager = new DBManager();
   $location = 4;
+
+  // Get the tasks based off a location
   $locationTaskList = $dbManager->fetchTaskList($location); 
   var_dump($locationTaskList);
+  echo "</br>"
 ?>
 
 <html>
