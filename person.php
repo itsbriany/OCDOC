@@ -22,14 +22,14 @@ class Person {
   }
 
   public function checkTODO($list) {
-    $test = false;
+    $test = true;
     foreach ($this->todoList as $value) {
       if (!in_array($value, $list)) {
-        $test = false;
+        return false;
       }
     }
-    //echo $this->complete;
     return $test;
+    //echo $this->complete;
   }
 
 }
