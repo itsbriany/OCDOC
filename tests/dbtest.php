@@ -4,14 +4,14 @@
   require_once '../models/room.php';
 
   $dbManager = new DBManager();
-  $location = Room::IT;
+  $location = Room::Lobby;
 
   // Get the tasks based off a location
   // $locationTaskList = $dbManager->fetchTaskList($location);
   // var_dump($locationTaskList);
-  echo "</br>";
+  // echo "</br>";
 
-  $playerID = $dbManager->setPlayer(1);
+  $playerID = $dbManager->setPlayer(3);
   echo "Player ID: " . $playerID . "</br>";
 
   $dbManager->move($location);
@@ -19,7 +19,7 @@
 
 <html>
     <head>
-        <title>Time Test</title>
+        <title>DB Test</title>
     </head>
     <body>
 

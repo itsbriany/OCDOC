@@ -42,17 +42,17 @@ class DBManager {
     $playerOldMinutes = $this->getPlayerMinutes($conn);
     $currentMinutes = $playerOldMinutes - Player::TimeToMoveBetweenRooms; 
     if ($currentMinutes < 0) {
-      $currentMinutes = 0; 
+      $currentMinutes = 60; 
+      // TODO Turn complete
+      $this->completePlayerTurn();
     }
-
-    // Consume the player's time
     $this->consumePlayerMinutes($conn, $currentMinutes);
-
-    // Query the database to consume the person's time
-    // Based on the location and task, consume the person's time
-    $sql = "UPDATE Players SET Location = '" . $location . "' WHERE Player_ID = " . $this->playerID . ";";
-    $conn->query($sql);
+    $this->updatePlayerLocation($conn, $location);
     $this->closeConnection($conn);
+  }
+
+  public function completePlayerTurn() {
+    echo $this->className . "::completePlayerTurn: FIXXX MEEEEEEE!!"; 
   }
 
   public function setPlayer($id) {
@@ -208,7 +208,13 @@ class DBManager {
   }
 
   private function consumePlayerMinutes($conn, $newPlayerMinutes) {
-    $sql = "UPDATE Players SET Minutes = " . $newPlayerMinutes . " WHERE ID = " . $this->playerID .";";
+    $sql = "UPDATE Players SET Minutes = " . $newPlayerMinutes . " WHERE Player_ID = " . $this->playerID .";";
+    $conn->query($sql);
+  }
+
+
+  private function updatePlayerLocation($conn, $location) {
+    $sql = "UPDATE Players SET Location = '" . $location . "' WHERE Player_ID = " . $this->playerID . ";";
     $conn->query($sql);
   }
 
