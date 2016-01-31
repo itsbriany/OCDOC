@@ -27,7 +27,8 @@ class DBManager {
    *  Does a task for a person and consumes the person's time accordingly
    */
   public function doTaskForPerson($taskID) {
-    $conn = $this->openConnection();  
+    echo "I FUCKING MADE IT!";
+    $conn = $this->openConnection();
     // Get task time
     $taskTime = $this->getTaskTime($conn, $taskID);
     $playerTime = $this->getPlayerMinutes($conn);
@@ -59,7 +60,7 @@ class DBManager {
     }
     $conn = $this->openConnection();
     $playerOldMinutes = $this->getPlayerMinutes($conn);
-    $currentMinutes = $playerOldMinutes - self::TimeToMoveBetweenRooms; 
+    $currentMinutes = $playerOldMinutes - self::TimeToMoveBetweenRooms;
     if ($currentMinutes <= 0) {
       $currentMinutes = 60;
       // TODO Turn complete
@@ -95,6 +96,8 @@ class DBManager {
         array_push($this->todo, $row["Task_ID"]);
       }
     }
+
+    $this->closeConnection($conn);
     return $this->playerID;
 
   }
@@ -103,8 +106,8 @@ class DBManager {
    *  @return The minutes associated with the provided player id
    */
   public function getMinutes() {
-    $conn = $this->openConnection(); 
-    $playerMinutes = $this->getPlayerMinutes($conn); 
+    $conn = $this->openConnection();
+    $playerMinutes = $this->getPlayerMinutes($conn);
     $this->closeConnection($conn);
     return $playerMinutes;
   }
@@ -170,13 +173,13 @@ class DBManager {
    *  @param $taskID The integer representing the task id
    */
   public function getTaskTime($conn, $taskID) {
-    $sql = "SELECT TimeConsumption FROM Tasks WHERE Task_ID = " . $taskID . ";"; 
+    $sql = "SELECT TimeConsumption FROM Tasks WHERE Task_ID = " . $taskID . ";";
     $result = $conn->query($sql);
     if (!$result) {
-      return; 
+      return;
     }
     while ($row = $result->fetch_assoc()) {
-      return $row["TimeConsumption"]; 
+      return $row["TimeConsumption"];
     }
   }
 
@@ -233,7 +236,7 @@ class DBManager {
     if ($conn->connect_error) {
       $this->errorMsg($conn);
     }
-    echo "Connected successfully</br>";
+    //echo "Connected successfully</br>";
     return $conn;
   }
 
@@ -241,7 +244,7 @@ class DBManager {
     $sql = "SELECT Minutes FROM Players WHERE Player_ID = " . $this->playerID . ";";
     $result = $conn->query($sql);
     if (!$result) {
-      return 0; 
+      return 0;
     }
     $currentMinutes = null;
     if ($row = $result->fetch_assoc()) {
@@ -268,7 +271,7 @@ class DBManager {
     if (!$conn->close()) {
       $this->errorMsg($conn);
     }
-    echo "closing connection </br>";
+    //echo "closing connection </br>";
   }
 
   /**

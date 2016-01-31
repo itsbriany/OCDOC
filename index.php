@@ -6,9 +6,17 @@
   require_once "models/player.php";
 
   $dbManager = new DBManager();
-  $playerID = 1
+  $playerID = 1;
 
   $dbManager->setPlayer($playerID);
+
+  print_r($_POST);
+
+  if (isset($_POST["task"])) {
+    echo "yayyyyyyyyyy";
+    $dbManager->doTaskForPerson($_POST["task"]);
+  }
+
   $day = $dbManager->getDay();
   $hour = $dbManager->getHour();
   $name = $dbManager->getName();
@@ -16,42 +24,8 @@
   $avalableTasks = $dbManager->fetchTaskList($location);
   $timeLeft = $dbManager->getMinutes();
 
-
   $rooms = array("IT", "Reception", "Bathroom", "BreakRoom", "CustomerSupport", "HR", "BossOffice", "Lobby", "CopyRoom", "BoardRoom");
 
-
-
-
-
-
-
-
-
-
-
-
-
-/*  $cookie_name = "user";
-  $cookie_value = "John Doe";
-  setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
-
-  if(!isset($_COOKIE[$cookie_name])) {
-    echo "Cookie named '" . $cookie_name . "' is not set!";
-  } else {
-    echo "Cookie '" . $cookie_name . "' is set!<br>";
-    echo "Value is: " . $_COOKIE[$cookie_name];
-  }
-
-
-  function test() {
-    echo "<h1>TESTING</h1></br>";
-  }
-
-  function test2() {
-    echo "<h1>TESTING TWO</h1></br>";
-  }
-
-  */
 
 
 
@@ -85,26 +59,51 @@
       $('#modalLast').focus();
     });
   </script>
-<div class="modal fade option" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <img src="https://placehold.it/350x150" class=".img-responsive" style="width:100%" alt="Image">
+
+  <?php if($avalableTasks): ?>
+  <?php foreach($avalableTasks as $key => $items): ?>
+  <?php echo "<div class=\"modal fade option\" id=\"modal" . ($key + 1) . "\" role=\"dialog\">
+  <form id=\"" . $key . "\" method=\"post\">
+    <div class=\"modal-dialog\">
+        <div class=\"modal-content\">
+            <div class=\"modal-header\">
+                <img src=\"https://placehold.it/350x150\" class=\".img-responsive\" style=\"width:100%\" alt=\"Image\">
             </div>
-            <div class="modal-body">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lectus lorem, aliquet tincidunt erat at, faucibus lobortis massa. Etiam vitae elit euismod, tempor ligula non, elementum dui. Duis luctus leo vitae nibh sagittis sollicitudin.
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lectus lorem, aliquet tincidunt erat at, faucibus lobortis massa. Etiam vitae elit euismod, tempor ligula non, elementum dui. Duis luctus leo vitae nibh sagittis sollicitudin.
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lectus lorem, aliquet tincidunt erat at, faucibus lobortis massa. Etiam vitae elit euismod, tempor ligula non, elementum dui. Duis luctus leo vitae nibh sagittis sollicitudin.
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lectus lorem, aliquet tincidunt erat at, faucibus lobortis massa. Etiam vitae elit euismod, tempor ligula non, elementum dui. Duis luctus leo vitae nibh sagittis sollicitudin.
-                </p>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default btn-success center-block" data-dismiss="modal">OK</button>
-                </div>
+          <div class=\"modal-body\">
+            <p>";
+              echo $avalableTasks[$key]["Description"];
+            echo "</p>
+            <div class=\"modal-footer\">
+              <button type=\"submit\" form=\"" . $key . "\" class=\"btn btn-default btn-success center-block\" data-dismiss=\"modal\" name=\"task\" value=\"" . $key . "\">OK</button>
             </div>
+          </div>
         </div>
-    </div>
-</div>
+      </div>
+    </form>
+  </div>";  ?>
+  <?php endforeach; ?>
+  <?php endif; ?>
+
+  <div class="modal fade option" role="dialog">
+    <form action="post">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <img src="https://placehold.it/350x150" class=".img-responsive" style="width:100%" alt="Image">
+          </div>
+          <div class="modal-body">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lectus lorem, aliquet tincidunt erat at, faucibus lobortis massa. Etiam vitae elit euismod, tempor ligula non, elementum dui. Duis luctus leo vitae nibh sagittis sollicitudin.
+            </p>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default btn-success center-block" data-dismiss="modal">OK</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+  </div>
 
 <body>
 
@@ -129,18 +128,13 @@
         <button type="button" name="name" class="btn btn-default dropdown-toggle roomDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Rooms <span class="caret"></span>
         </button>
-
         <ul class="dropdown-menu">
           <?php if($rooms): ?>
             <?php foreach($rooms as $key => $items): ?>
               <?php echo "<li><a href=\"#\" name=\"location\" value=\"" . ($key +1) . "\" type=\"submit\">" . $items . "</a></li>"; ?>
             <?php endforeach; ?>
           <?php endif; ?>
-          <li><a href="#" name="location" value="CustomerSupport" type="submit">Lunch Room</a></li>
-          <li><a href="#">Secretary's Desk</a></li>
-          <li><a href="#">IT Guy's Dungeon</a></li>
         </ul>
-
       </div>
     </div>
 
@@ -148,10 +142,7 @@
     <div class="btn-group-vertical mainBody">
       <?php if($avalableTasks): ?>
         <?php foreach($avalableTasks as $key => $items): ?>
-      <?php
-                         echo $key . " MYARRAY: " . print_r($items);
-                         echo "<button type=\"button\" class=\"btn userOptions\" data-toggle=\"modal\" data-target=\".option\">" . $items["Task"] . "</button>
-  "; ?>
+      <?php echo "<button type=\"button\" class=\"btn userOptions\" data-toggle=\"modal\" data-target=\"#modal" . ($key + 1) . "\">" . $items["Task"] . "   ----- Time Needed: " . $items["TimeConsumption"] . "</button>";  ?>
         <?php endforeach; ?>
       <?php endif; ?>
       <!-- <button type="button" class="btn userOptions" data-toggle="modal" data-target=".option">Option #1</button>
@@ -160,7 +151,7 @@
     </div>
 
     <div class="mainFooter">
-      <p class="userMinutes">You have ___ minutes left.</p>
+      <p class="userMinutes">You have <?php echo $timeLeft; ?> minutes left.</p>
 
       <!--THIS BUTTON TAKES YOU TO THE INFO PAGE FOR YOUR CHARACTER--------------------------------------------->
       <button class="btn infoButton" type="button" >Player Info</button>
