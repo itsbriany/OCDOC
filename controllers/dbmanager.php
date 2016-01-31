@@ -401,6 +401,7 @@ class DBManager {
   }
 
   public function setHour($hour) {
+    echo "ger hndfghx ";
     $conn = $this->openConnection();
     $sql = "UPDATE TBLTime SET hour = " . $hour . ";";
     if ($result = $conn->query($sql)) {
