@@ -60,7 +60,35 @@
   <?php 
     $image = "https://placehold.it/350x150";
     if(isset($items["Name"])) {
-      $image = $assetsDirectory . strtolower($items["Name"]) . ".png"; 
+      if (strtolower($items["Name"]) == "douche dan") {
+        $image = $assetsDirectory . "douche.png"; 
+      } else if (strtolower($items["Name"]) == "secretary") {
+        $image = $assetsDirectory . "secretary.png"; 
+      } else if (strtolower($items["Name"]) == "sally slacker") {
+        $image = $assetsDirectory . "slacker.png"; 
+      } else if (strtolower($items["Name"]) == "jenny joker") {
+        $image = $assetsDirectory . "joker.png"; 
+      } else if (strtolower($items["Name"]) == "reception") {
+        $image = $assetsDirectory . "reception.png"; 
+      } else if (strtolower($items["Name"]) == "bathroom") {
+        $image = $assetsDirectory . "bathroom.png"; 
+      } else if (strtolower($items["Name"]) == "breakroom") {
+        $image = $assetsDirectory . "breakroom.png"; 
+      } else if (strtolower($items["Name"]) == "customersupport") {
+        $image = $assetsDirectory . "customersupport.png"; 
+      } else if (strtolower($items["Name"]) == "hr") {
+        $image = $assetsDirectory . "hr.png"; 
+      } else if (strtolower($items["Name"]) == "bossoffice") {
+        $image = $assetsDirectory . "bossoffice.png"; 
+      } else if (strtolower($items["Name"]) == "lobby") {
+        $image = $assetsDirectory . "lobby.png"; 
+      } else if (strtolower($items["Name"]) == "copyroom") {
+        $image = $assetsDirectory . "copyroom.png"; 
+      } else if (strtolower($items["Name"]) == "boardroom") {
+        $image = $assetsDirectory . "boardroom.png"; 
+      } else if (strtolower($items["Name"]) == "it guy") {
+        $image = $assetsDirectory . "it.png"; 
+      } 
     } 
     echo "<div class=\"modal fade option\" id=\"modal" . ($key + 1) . "\" role=\"dialog\">
     <form id=\"" . $key . "\" method=\"post\">

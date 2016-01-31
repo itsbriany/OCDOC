@@ -4,7 +4,7 @@
   require_once '../models/room.php';
 
   $dbManager = new DBManager();
-  $location = Room::BreakRoom;
+  $location = Room::Lobby;
 
   $playerID = $dbManager->setPlayer(1);
 
