@@ -1,5 +1,4 @@
 <?php
-// require_once "../models/player.php";
 class DBManager {
 
   private $className = "DBManager";
@@ -51,13 +50,13 @@ class DBManager {
       $location = ($location % 10) + 1;
     }
     if (!$this->playerID) {
-      die ($className . ": Could not move player due to missing player ID!"); 
+      die ($className . ": Could not move player due to missing player ID!");
     }
     $conn = $this->openConnection();
     $playerOldMinutes = $this->getPlayerMinutes($conn);
     $currentMinutes = $playerOldMinutes - self::TimeToMoveBetweenRooms; 
     if ($currentMinutes < 0) {
-      $currentMinutes = 60; 
+      $currentMinutes = 60;
       // TODO Turn complete
       $this->completePlayerTurn();
     }
@@ -67,7 +66,7 @@ class DBManager {
   }
 
   public function completePlayerTurn() {
-    echo $this->className . "::completePlayerTurn: FIXXX MEEEEEEE!!"; 
+    echo $this->className . "::completePlayerTurn: FIXXX MEEEEEEE!!";
   }
 
   public function setPlayer($id) {
@@ -231,7 +230,7 @@ class DBManager {
       $oldMinutes = $row["Minutes"];
     }
     if (!$oldMinutes) {
-      die ($this->className . ": could not find Minutes for Player with ID " . $this->playerID); 
+      die ($this->className . ": could not find Minutes for Player with ID " . $this->playerID);
     }
     return $oldMinutes;
   }
