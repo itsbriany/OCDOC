@@ -160,6 +160,7 @@
         data: {blah: 'blah'} 
       }).done(function(response) {
         $(".userMinutes").text("You have " + response + " minutes left.");
+        location.reload();
       });
       
     });
