@@ -280,7 +280,7 @@ class DBManager {
   }
 
   private function updatePlayerLocation($conn, $location) {
-    $sql = "UPDATE Players SET Location = '" . $location . "' WHERE Player_ID = " . $this->playerID . ";";
+    $sql = "UPDATE Players SET Location = " . $location . " WHERE Player_ID = " . $this->playerID . ";";
     $conn->query($sql);
   }
 

@@ -8,6 +8,9 @@
     $playerID = $dbManager->setPlayer(1);
     $Numericallocation = 0;
 
+    $newLocation = strtolower($newLocation);
+    $newLocation = trim($newLocation, " ");
+
     if (strtolower($newLocation) == 'it') {
     $Numericallocation = 0;
     } else if (strtolower($newLocation) == 'reception') {
