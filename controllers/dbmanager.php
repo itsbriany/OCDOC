@@ -74,8 +74,6 @@ class DBManager {
     $sql = "SELECT * FROM Players WHERE Player_ID = " . $id . ";";
     $result = $conn->query($sql);
 
-
-    //if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()){
       $this->playerID = (int)$row["Player_ID"];
       $this->turnID = (int)$row["Turn_ID"];
@@ -162,7 +160,7 @@ class DBManager {
   }
 
   public function getTaskTime($conn, $taskID) {
-    $sql = "SELECT TimeConsumption FROM "; 
+    $sql = "SELECT TimeConsumption FROM Tasks "; 
   }
 
   public function getDay() {
@@ -223,8 +221,11 @@ class DBManager {
   }
 
   private function getPlayerMinutes($conn) {
-    $sql = "SELECT Minutes FROM Players WHERE Player_ID = '" . $this->playerID . "';";
+    $sql = "SELECT Minutes FROM Players WHERE Player_ID = " . $this->playerID . ";";
     $result = $conn->query($sql);
+    if (!$result) {
+      return 0; 
+    }
     $currentMinutes = null;
     if ($row = $result->fetch_assoc()) {
       $oldMinutes = $row["Minutes"];
