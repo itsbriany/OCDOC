@@ -4,9 +4,11 @@
 
   $dbManager = new DBManager();
   $location = 4;
-  $dbManager->fetchTaskList($location); 
 
-  // TODO Certain events will happen at various times of day
+  // Get the tasks based off a location
+  $locationTaskList = $dbManager->fetchTaskList($location);
+  var_dump($locationTaskList);
+  echo "</br>"
 ?>
 
 <html>
