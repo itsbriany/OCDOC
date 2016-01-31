@@ -12,6 +12,7 @@ class Player {
    */
   public function move($location) {
     $this->minutesLeft -= $this->timeToMoveBetweenRooms;
+    // Get the location
   }
 
   public function addMinutes($ammount) {

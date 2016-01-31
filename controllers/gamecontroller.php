@@ -1,10 +1,13 @@
 <?php
 require_once "../models/time.php";
-class GameManager {
+require_once "../models/player.php";
+class GameController {
   private $time = null;
+  private $currentPlayer = null;
 
   public function __construct() {
     $time = new Time(); 
+    $currentPlayer = new Player();
   }
 
   /**
@@ -17,6 +20,13 @@ class GameManager {
     // Do a check to see if the hour is up
     // Do a check to see if the day is up
     $this->time = $newTime; 
+  }
+
+  /**
+   *  @param $player The player object
+   */
+  public function setCurrentPlayer($player) {
+    $this->currentPlayer = $player; 
   }
 
   /**
