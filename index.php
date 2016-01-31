@@ -11,9 +11,6 @@
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="node_modules/angular-carousel/dist/angular-carousel.css">
-
     <link rel="stylesheet" href="/assets/css/main.css">
 
 </head>
