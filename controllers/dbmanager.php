@@ -1,5 +1,5 @@
 <?php
-require_once "../models/player.php";
+// require_once "../models/player.php";
 class DBManager {
 
   private $className = "DBManager";
@@ -22,6 +22,21 @@ class DBManager {
   private $todo = array();
   private $completed = array();
 
+  const TimeToMoveBetweenRooms = 5;
+
+  /**
+   *  Does a task for a person and consumes the person's time accordingly
+   */
+  public function doTaskForPerson($taskID) {
+    $conn = $this->openConnection();  
+    // Get task time
+    $taskTime = $this->getTaskTime($conn, $taskID);
+    // Subtract player time
+    $sql = "UPDATE ";
+    $this->getPlayerMinutes($conn);
+    $this->consumePlayerMinutes($conn, $newPlayerMinutes);
+    $this->closeConnection();
+  }
 
   /**
    *  Moves the player to the specified location
@@ -40,7 +55,7 @@ class DBManager {
     }
     $conn = $this->openConnection();
     $playerOldMinutes = $this->getPlayerMinutes($conn);
-    $currentMinutes = $playerOldMinutes - Player::TimeToMoveBetweenRooms; 
+    $currentMinutes = $playerOldMinutes - self::TimeToMoveBetweenRooms; 
     if ($currentMinutes < 0) {
       $currentMinutes = 60; 
       // TODO Turn complete
@@ -80,6 +95,16 @@ class DBManager {
     }
     return $this->playerID;
 
+  }
+
+  /**
+   *  @return The minutes associated with the provided player id
+   */
+  public function getMinutes() {
+    $conn = $this->openConnection(); 
+    $playerMinutes = $this->getPlayerMinutes($conn); 
+    $this->closeConnection($conn);
+    return $playerMinutes;
   }
 
   public function getTurnId() {
@@ -135,6 +160,10 @@ class DBManager {
       return $taskListID;
     }
 
+  }
+
+  public function getTaskTime($conn, $taskID) {
+    $sql = "SELECT TimeConsumption FROM "; 
   }
 
   public function getDay() {
@@ -212,11 +241,11 @@ class DBManager {
     $conn->query($sql);
   }
 
-
   private function updatePlayerLocation($conn, $location) {
     $sql = "UPDATE Players SET Location = '" . $location . "' WHERE Player_ID = " . $this->playerID . ";";
     $conn->query($sql);
   }
+
 
   private function closeConnection($conn) {
     if (!$conn->close()) {

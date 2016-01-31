@@ -9,17 +9,6 @@ class Player {
 
   const TimeToMoveBetweenRooms = 5;
   
-
-  /*
-     @param $taskID The task to do
-     @return The response from completing the task
-  */
-  public function doTask($taskID) {
-    // Query the database here to get the message associated with the given taskID
-    // Subtract the task's time consumption from the global time
-    return "Completed task " . $taskID . "</br>";
-  }
-
   public function addMinutes($ammount) {
     return $this->minutes += $ammount;
   }
