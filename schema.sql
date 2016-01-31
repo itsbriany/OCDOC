@@ -157,10 +157,11 @@ VALUES
 INSERT INTO NPC
     (TaskList_ID, Name, Location)
 VALUES
-    ("SecretaryTask", "Secretary", 4),
-    ("ITTask", "IT", 5),
-    ("BossTask", "Boss", 3),
-    ("LunchRoomTask", "LunchRoom", 7);
+    ("DanTask", "Douche Dan", 3),
+    ("Secretary", "Secretary", 1),
+    ("SlackerTask", "Sally Slacker", 5),
+    ("JokerTask", "Jenny Joker", 4),
+    ("ITTask", "IT Guy", 0);
 
 -- --------------------------------------------------------
 
