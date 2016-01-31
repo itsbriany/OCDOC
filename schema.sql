@@ -172,6 +172,10 @@ VALUES
     ("CopyRoomTask", "CopyRoom", 8),
     ("BoardRoomTask", "BoardRoom", 9);
 
+
+    UPDATE Players SET Location = 4 WHERE Player_ID = 1;
+    UPDATE NPC SET Location = 4 WHERE ID = 2;
+
 -- --------------------------------------------------------
 
 --
