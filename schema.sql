@@ -158,7 +158,7 @@ INSERT INTO NPC
     (TaskList_ID, Name, Location)
 VALUES
     ("DanTask", "Douche Dan", 3),
-    ("Secretary", "Secretary", 1),
+    ("SecretaryTask", "Secretary", 1),
     ("SlackerTask", "Sally Slacker", 5),
     ("JokerTask", "Jenny Joker", 4),
     ("ITTask", "IT Guy", 0),
@@ -171,6 +171,10 @@ VALUES
     ("LobbyTask", "Lobby", 13),
     ("CopyRoomTask", "CopyRoom", 8),
     ("BoardRoomTask", "BoardRoom", 9);
+
+
+    UPDATE Players SET Location = 4 WHERE Player_ID = 1;
+    UPDATE NPC SET Location = 4 WHERE ID = 2;
 
 -- --------------------------------------------------------
 
