@@ -30,10 +30,15 @@ class DBManager {
     $conn = $this->openConnection();  
     // Get task time
     $taskTime = $this->getTaskTime($conn, $taskID);
+    $playerTime = $this->getPlayerMinutes($conn);
+    $newMinutes = $playerTime - $taskTime;
+    if ($newMinutes <= 0) {
+      $newMinutes = 60;
+      // TODO Turn complete
+      $this->completePlayerTurn();
+    }
     // Subtract player time
-    $sql = "UPDATE ";
-    $this->getPlayerMinutes($conn);
-    $this->consumePlayerMinutes($conn, $newPlayerMinutes);
+    $this->updatePlayerMinutes($conn, $newMinutes);
     $this->closeConnection();
   }
 
@@ -55,12 +60,12 @@ class DBManager {
     $conn = $this->openConnection();
     $playerOldMinutes = $this->getPlayerMinutes($conn);
     $currentMinutes = $playerOldMinutes - self::TimeToMoveBetweenRooms; 
-    if ($currentMinutes < 0) {
+    if ($currentMinutes <= 0) {
       $currentMinutes = 60;
       // TODO Turn complete
       $this->completePlayerTurn();
     }
-    $this->consumePlayerMinutes($conn, $currentMinutes);
+    $this->updatePlayerMinutes($conn, $currentMinutes);
     $this->updatePlayerLocation($conn, $location);
     $this->closeConnection($conn);
   }
@@ -159,8 +164,20 @@ class DBManager {
 
   }
 
+  /**
+   *  @return The time it takes to complete a task
+   *  @param $conn The mysqli connection object
+   *  @param $taskID The integer representing the task id
+   */
   public function getTaskTime($conn, $taskID) {
-    $sql = "SELECT TimeConsumption FROM Tasks "; 
+    $sql = "SELECT TimeConsumption FROM Tasks WHERE Task_ID = " . $taskID . ";"; 
+    $result = $conn->query($sql);
+    if (!$result) {
+      return; 
+    }
+    while ($row = $result->fetch_assoc()) {
+      return $row["TimeConsumption"]; 
+    }
   }
 
   public function getDay() {
@@ -236,7 +253,7 @@ class DBManager {
     return $oldMinutes;
   }
 
-  private function consumePlayerMinutes($conn, $newPlayerMinutes) {
+  private function updatePlayerMinutes($conn, $newPlayerMinutes) {
     $sql = "UPDATE Players SET Minutes = " . $newPlayerMinutes . " WHERE Player_ID = " . $this->playerID .";";
     $conn->query($sql);
   }
