@@ -5,28 +5,10 @@ class Player {
   private $minutesLeft = 60;
   private $todoList = array();
   private $complete = 0;
-  private $timeToMoveBetweenRooms = 5;
   private $location = Room::Lobby;
 
-  // TODO Move the move function to the DBManager
-
-  /**
-   *  Moves the player to the specified location
-   *  Locations are represented by an integer
-   */
-  public function move($location) {
-    $this->minutesLeft -= $this->timeToMoveBetweenRooms;
-    // Sanitize the location
-    if ($location < 1) {
-      return;
-    }
-    if ($location > 10) {
-      $location = ($location % 10) + 1;
-    }
-    // Query the database to consume the person's time
-    // Based on the location and task, consume the person's time
-    $this->location = $location;
-  }
+  const TimeToMoveBetweenRooms = 5;
+  
 
   /*
      @param $taskID The task to do
