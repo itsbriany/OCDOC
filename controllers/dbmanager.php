@@ -12,6 +12,9 @@ class DBManager {
   private $turnID = 0;
   private $name = 0;
   private $location = 0;
+
+  private $day = 0;
+  private $hour = 0;
   // task data
   private $todo = array();
   private $completed = array();
@@ -71,8 +74,8 @@ class DBManager {
       // $sql = "SELECT * FROM Tasks LEFT JOIN NPC ON NPC.TaskLink_ID = Tasks.TaskLink_ID WHERE Tasks.TaskLink_ID = `SecretaryTask` AND Tasks.Req_Room = 4";
       $taskListID = $this->findTaskListID($conn, $location);
       if (!$taskListID) {
-        echo "Could not fetch task list ID"; 
-        $this->closeConnection($conn); 
+        echo "Could not fetch task list ID";
+        $this->closeConnection($conn);
         return;
       }
       $sql = "SELECT * FROM Tasks LEFT JOIN NPC ON NPC.TaskLink_ID = Tasks.TaskLink_ID WHERE Tasks.TaskLink_ID = " . $taskListID . " AND Tasks.Req_Room =" . $location . ";";
@@ -81,7 +84,7 @@ class DBManager {
           echo $row["Task"] . "</br>";
         }
       }
-      $this->closeConnection($conn); 
+      $this->closeConnection($conn);
   }
 
   private function findTaskListID($conn, $location) {
@@ -90,10 +93,54 @@ class DBManager {
       return;
     }
     while ($row = $result->fetch_assoc()) {
-    
+
     }
-    $taskListID = $row["TaskList_ID "]; 
+    $taskListID = $row["TaskList_ID "];
     return $taskListID;
+  }
+
+  public function getDay() {
+    $conn = $this->openConnection();
+
+    $sql = "SELECT Day FROM TBLTime;";
+    if ($result = $conn->query($sql)) {
+      $this->day = $result["Day"];
+    }
+
+    $this->closeConnection($conn);
+    return $this->day;
+  }
+
+  public function getHour() {
+    $conn = $this->openConnection();
+
+    $sql = "SELECT Hour FROM TBLTime;";
+    if ($result = $conn->query($sql)) {
+      $this->hour = $result["Hour"];
+    }
+
+    $this->closeConnection($conn);
+    return $this->hour;
+  }
+
+  public function setDay($day) {
+    $conn = $this->openConnection();
+
+    $sql = "UPDATE TBLTime SET Day = " . $day . " WHERE ID = 1;";
+    if ($result = $conn->query($sql)) {
+       $this->day = $day;
+    }
+    $this->closeConnection($conn);
+  }
+
+  public function setHour($hour) {
+    $conn = $this->openConnection();
+
+    $sql = "UPDATE TBLTime SET hour = " . $hour . " WHERE ID = 1;";
+    if ($result = $conn->query($sql)) {
+      $this->hour = $hour;
+    }
+    $this->closeConnection($conn);
   }
 
   /**
@@ -111,7 +158,7 @@ class DBManager {
   private function closeConnection($conn) {
     if (!$conn->close()) {
       $this->errorMsg($conn);
-    } 
+    }
     echo "closing connection </br>";
   }
 
@@ -119,9 +166,9 @@ class DBManager {
    *  @param $conn The mysqli connection object
    */
   private function errorMsg($conn) {
-    die ("Failed to close connection: ". $conn->connect_errno . "</br>"); 
+    die ("Failed to close connection: ". $conn->connect_errno . "</br>");
   }
 
-  
+
 }
 ?>
