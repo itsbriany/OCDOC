@@ -27,17 +27,19 @@ class DBManager {
    *  Does a task for a person and consumes the person's time accordingly
    */
   public function doTaskForPerson($taskID) {
-    echo "I FUCKING MADE IT!";
     $conn = $this->openConnection();
     // Get task time
     $taskTime = $this->getTaskTime($conn, $taskID);
     echo "task time complete </br>!";
     $playerTime = $this->getPlayerMinutes($conn);
+    if (!$playerTime) {
+      return; 
+    }
     echo "player time complete </br>!";
     $newMinutes = $playerTime - $taskTime;
     echo "new amount complete </br>!";
     if ($newMinutes <= 0) {
-      $newMinutes = 60;
+      $newMinutes = 0;
       // TODO Turn complete
       $this->completePlayerTurn();
     }
@@ -65,6 +67,9 @@ class DBManager {
     }
     $conn = $this->openConnection();
     $playerOldMinutes = $this->getPlayerMinutes($conn);
+    if (!$playerOldMinutes) {
+      return; 
+    }
     $currentMinutes = $playerOldMinutes - self::TimeToMoveBetweenRooms;
     if ($currentMinutes <= 0) {
       $currentMinutes = 60;
@@ -135,6 +140,13 @@ class DBManager {
 
   public function setLocation($location) {
     $this->location = $location;
+  }
+
+  public function moveNPC($NPCName, $location) {
+    $conn = $this->openConnection(); 
+    $sql = "UPDATE NPC SET Location = " . $location . " WHERE Name = '". $NPCName ."';";
+    $conn->query($sql);
+    $this->closeConnection($conn);
   }
 
   /**

@@ -23,14 +23,14 @@ $browser = $_SERVER['HTTP_USER_AGENT'];
 
       <p>
         <input type="text" name="day">
-        <input type="submit" name="redirect" value="I Love PHP"><br>
+        <input type="submit" name="redirect" value="Set day"><br>
       </p>
       <p>
         <input type="text" name="hour">
-        <input type="submit" name="redirect2" value="I Love JSP"><br>
+        <input type="submit" name="redirect2" value="Set hour"><br>
       </p>
       <p>
-        <input type="submit" name="redirect3" value="I Love ASP"><br>
+        <input type="submit" name="redirect3" value="Move NPC to location (NPC is a name, location is a number between 1-10 inclusive)"><br>
       </p>
 
     </form>

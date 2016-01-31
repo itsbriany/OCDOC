@@ -39,14 +39,10 @@
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/assets/css/main.css">
-  <script type="text/javascript">
-
-
-
-  </script>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
 
 </head>
   <script type='text/javascript'>
@@ -81,30 +77,6 @@
   </div>";  ?>
   <?php endforeach; ?>
   <?php endif; ?>
-
-  <!--
-<button type=\"submit\" form=\"" . $key . "\" class=\"btn btn-default btn-success center-block\" data-dismiss=\"modal\" name=\"task\" value=\"" . $key . "\">OK</button>
-<div class="modal fade option" role="dialog">
-    <form action="post">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <img src="https://placehold.it/350x150" class=".img-responsive" style="width:100%" alt="Image">
-          </div>
-          <div class="modal-body">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lectus lorem, aliquet tincidunt erat at, faucibus lobortis massa. Etiam vitae elit euismod, tempor ligula non, elementum dui. Duis luctus leo vitae nibh sagittis sollicitudin.
-            </p>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default btn-success center-block" data-dismiss="modal">OK</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </form>
-
-  </div>
--->
 <body>
 
 <div class="container-fluid" style="align-content: center;">
@@ -113,7 +85,7 @@
   <div class="mainContainer">
     <div class="mainHeader">
 
-      <!--THIS IS WHERE THE DAY / HOUR IS SHOWN--------------------------------------------->
+      <!-- THIS IS WHERE THE DAY / HOUR IS SHOWN -->
       <div class="row">
         <p class="col-xs-6 currentDay">Day: <?php echo $day; ?></p>
 
@@ -121,7 +93,7 @@
       </div>
     </div>
 
-    <!--THIS IS WHERE THE ROOM DROP-DOWN IS ------------------------------------------------>
+    <!-- THIS IS WHERE THE ROOM DROP-DOWN IS -->
     <div class="roomSelector">
       <p class="roomSelectorText">What room are you in? <?php echo $rooms[$location] ?></p>
       <div class="btn-group">
@@ -138,24 +110,21 @@
       </div>
     </div>
 
-    <!--THIS IS WHERE THE BUTTONS FOR OPTIONS ARE SHOWN--------------------------------------------->
+    <!-- THIS IS WHERE THE BUTTONS FOR OPTIONS ARE SHOWN -->
     <div class="btn-group-vertical mainBody">
       <?php if($avalableTasks): ?>
         <?php foreach($avalableTasks as $key => $items): ?>
       <?php echo "<button type=\"button\" class=\"btn userOptions\" data-toggle=\"modal\" data-target=\"#modal" . ($key + 1) . "\">" . $items["Task"] . "   ----- Time Needed: " . $items["TimeConsumption"] . "</button>";  ?>
         <?php endforeach; ?>
       <?php endif; ?>
-      <!-- <button type="button" class="btn userOptions" data-toggle="modal" data-target=".option">Option #1</button>
-      <button type="button" class="btn userOptions" data-toggle="modal" data-target=".option">Option #2</button>
-      <button type="button" class="btn userOptions" data-toggle="modal" data-target=".option">Option #3</button> -->
     </div>
 
     <div class="mainFooter">
       <p class="userMinutes">You have <?php echo $timeLeft; ?> minutes left.</p>
 
-      <!--THIS BUTTON TAKES YOU TO THE INFO PAGE FOR YOUR CHARACTER--------------------------------------------->
+      <!-- THIS BUTTON TAKES YOU TO THE INFO PAGE FOR YOUR CHARACTER -->
       <button class="btn infoButton" type="button" >Player Info</button>
-      <!--THIS BUTTON SHOULD END YOUR TURN--------------------------------------------->
+      <!-- THIS BUTTON SHOULD END YOUR TURN -->
       <button class="btn btn-danger" type="button">End Turn</button>
     </div>
   </div>
@@ -163,23 +132,23 @@
 
 
   <?php if($showModal) { ?>
-  <!-- ======================================== PROFILE PAGE -->
+  <!-- PROFILE PAGE -->
   <div class="profile profileBack">
     <div class="upperProfile">
-      <!--THIS IS WHERE YOUR CHARACTER'S NAME GOES--------------------------------------------->
+      <!-- THIS IS WHERE YOUR CHARACTER'S NAME GOES -->
       <p class="profileName">NAME LAST</p>
-      <!--THIS IS WHERE YOUR CHARACTER'S PHOTO GOES--------------------------------------------->
+      <!-- THIS IS WHERE YOUR CHARACTER'S PHOTO GOES -->
       <img class="profileIcon" src="https://placehold.it/100x150" alt="some_text">
-      <!--THIS IS WHERE YOUR CHARACTER'S JOB TITLE / CLASS GOES--------------------------------------------->
+      <!-- THIS IS WHERE YOUR CHARACTER'S JOB TITLE / CLASS GOES -->
       <p class="profileJob">JOB TITLE</p>
     </div>
 
-    <!--THIS IS WHERE THE STATS / INVENTORY / TASKS GO --------------------------------------------->
+    <!-- THIS IS WHERE THE STATS / INVENTORY / TASKS GO -->
     <div class="lowerProfile">
       <div id="Carousel" class="carousel slide profileCarousel" data-ride="carousel" data-interval="false">
         <!-- Wrapper for carousel items -->
         <div class="carousel-inner">
-          <!--INVENTORY--------------------------------------------->
+          <!-- INVENTORY -->
           <div class="item active">
             <p class="carouselTitle">INVENTORY</p>
             <p class="carouselObjects">ITEM 1</p>
@@ -187,7 +156,7 @@
             <p class="carouselObjects">ITEM 3</p>
             <p class="carouselObjects">ITEM 4</p>
           </div>
-          <!--TASKS--------------------------------------------->
+          <!-- TASKS -->
           <div class="item">
             <p class="carouselTitle">TASKS</p>
             <p class="carouselObjects">TASK 1</p>
@@ -195,7 +164,7 @@
             <p class="carouselObjects">TASK 3</p>
             <p class="carouselObjects">TASK 4</p>
           </div>
-          <!--STATS--------------------------------------------->
+          <!-- STATS -->
           <div class="item">
             <p class="carouselTitle">STATS</p>
             <p class="carouselObjects">STAT 1</p>
@@ -217,8 +186,6 @@
   <?php } ?>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.js"></script>
-<script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
 
 
 </body>
