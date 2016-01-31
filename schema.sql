@@ -161,7 +161,16 @@ VALUES
     ("Secretary", "Secretary", 1),
     ("SlackerTask", "Sally Slacker", 5),
     ("JokerTask", "Jenny Joker", 4),
-    ("ITTask", "IT Guy", 0);
+    ("ITTask", "IT Guy", 0)
+    ("ReceptionTask", "Reception", 13),
+    ("BathroomTask", "Bathroom", 2),
+    ("BreakRoomTask", "BreakRoom", 13),
+    ("CustomerSupportTask", "CustomerSupport", 13),
+    ("HRTask", "HR", 13),
+    ("BossOfficeTask", "BossOffice", 13),
+    ("LobbyTask", "Lobby", 13),
+    ("CopyRoomTask", "CopyRoom", 8),
+    ("BoardRoomTask", "BoardRoom", 9);
 
 -- --------------------------------------------------------
 
