@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <?php
   require_once '../controllers/dbmanager.php';
+  require_once '../models/room.php';
 
   $dbManager = new DBManager();
-  $location = 4;
+$location = Room::CustomerSupport;
 
   // Get the tasks based off a location
   $locationTaskList = $dbManager->fetchTaskList($location);
