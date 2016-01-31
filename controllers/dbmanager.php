@@ -227,8 +227,168 @@ class DBManager {
     return $this->hour;
   }
 
-  public function changeHour() {
+  public function changeHour($hour) {
+    echo "change hour ran </br>";
+    $conn = $this->openConnection();
+    if ($hour = 9) {
+      $sql = "UPDATE NPC SET LOCATION = 3 WHERE ID = 2;" .
+        "UPDATE NPC SET LOCATION = 1 WHERE ID = 3;".
+        "UPDATE NPC SET LOCATION = 5 WHERE ID = 4;".
+        "UPDATE NPC SET LOCATION = 4 WHERE ID = 5;".
+        "UPDATE NPC SET LOCATION = 4 WHERE ID = 6;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 7;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 8;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 9;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 10;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 11;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 12;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 13;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 14;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 15;".
+        "UPDATE NPC SET Location = 3 where is = 16;";
 
+    } elseif ($hour = 10) {
+      $sql = "UPDATE NPC SET LOCATION = 2 WHERE ID = 2;" .
+        "UPDATE NPC SET LOCATION = 1 WHERE ID = 3;".
+        "UPDATE NPC SET LOCATION = 3 WHERE ID = 4;".
+        "UPDATE NPC SET LOCATION = 4 WHERE ID = 5;".
+        "UPDATE NPC SET LOCATION = 4 WHERE ID = 6;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 7;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 8;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 9;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 10;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 11;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 12;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 13;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 14;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 15;".
+        "UPDATE NPC SET Location = 3 where is = 16;";
+
+    } elseif ($hour = 11) {
+      $sql = "UPDATE NPC SET LOCATION = 5 WHERE ID = 2;" .
+        "UPDATE NPC SET LOCATION = 1 WHERE ID = 3;".
+        "UPDATE NPC SET LOCATION = 3 WHERE ID = 4;".
+        "UPDATE NPC SET LOCATION = 4 WHERE ID = 5;".
+        "UPDATE NPC SET LOCATION = 4 WHERE ID = 6;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 7;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 8;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 9;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 10;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 11;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 12;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 13;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 14;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 15;".
+        "UPDATE NPC SET Location = 3 where is = 16;";
+
+    } elseif ($hour = 12) {
+      $sql = "UPDATE NPC SET LOCATION = 4 WHERE ID = 2;" .
+        "UPDATE NPC SET LOCATION = 1 WHERE ID = 3;".
+        "UPDATE NPC SET LOCATION = 3 WHERE ID = 4;".
+        "UPDATE NPC SET LOCATION = 2 WHERE ID = 5;".
+        "UPDATE NPC SET LOCATION = 4 WHERE ID = 6;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 7;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 8;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 9;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 10;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 11;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 12;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 13;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 14;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 15;".
+        "UPDATE NPC SET Location = 3 where is = 16;";
+
+    } elseif ($hour = 1) {
+      $sql = "UPDATE NPC SET LOCATION = 4 WHERE ID = 2;" .
+        "UPDATE NPC SET LOCATION = 1 WHERE ID = 3;".
+        "UPDATE NPC SET LOCATION = 5 WHERE ID = 4;".
+        "UPDATE NPC SET LOCATION = 2 WHERE ID = 5;".
+        "UPDATE NPC SET LOCATION = 4 WHERE ID = 6;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 7;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 8;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 9;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 10;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 11;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 12;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 13;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 14;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 15;".
+        "UPDATE NPC SET Location = 3 where is = 16;";
+
+    } elseif ($hour = 2) {
+      $sql = "UPDATE NPC SET LOCATION = 9 WHERE ID = 2;" .
+        "UPDATE NPC SET LOCATION = 1 WHERE ID = 3;".
+        "UPDATE NPC SET LOCATION = 5 WHERE ID = 4;".
+        "UPDATE NPC SET LOCATION = 8 WHERE ID = 5;".
+        "UPDATE NPC SET LOCATION = 4 WHERE ID = 6;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 7;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 8;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 9;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 10;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 11;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 12;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 13;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 14;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 15;".
+        "UPDATE NPC SET Location = 2 where is = 16;";
+
+    } elseif ($hour = 3) {
+      $sql = "UPDATE NPC SET LOCATION = 3 WHERE ID = 2;" .
+        "UPDATE NPC SET LOCATION = 1 WHERE ID = 3;".
+        "UPDATE NPC SET LOCATION = 5 WHERE ID = 4;".
+        "UPDATE NPC SET LOCATION = 8 WHERE ID = 5;".
+        "UPDATE NPC SET LOCATION = 4 WHERE ID = 6;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 7;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 8;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 9;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 10;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 11;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 12;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 13;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 14;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 15;".
+        "UPDATE NPC SET Location = 2 where is = 16;";
+
+    } elseif ($hour = 4) {
+      $sql = "UPDATE NPC SET LOCATION = 4 WHERE ID = 2;" .
+        "UPDATE NPC SET LOCATION = 1 WHERE ID = 3;".
+        "UPDATE NPC SET LOCATION = 5 WHERE ID = 4;".
+        "UPDATE NPC SET LOCATION = 8 WHERE ID = 5;".
+        "UPDATE NPC SET LOCATION = 4 WHERE ID = 6;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 7;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 8;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 9;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 10;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 11;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 12;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 13;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 14;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 15;".
+        "UPDATE NPC SET Location = 2 where is = 16;";
+
+    } elseif ($hour = 5) {
+      $sql = "UPDATE NPC SET LOCATION = 3 WHERE ID = 2;" .
+        "UPDATE NPC SET LOCATION = 1 WHERE ID = 3;".
+        "UPDATE NPC SET LOCATION = 5 WHERE ID = 4;".
+        "UPDATE NPC SET LOCATION = 8 WHERE ID = 5;".
+        "UPDATE NPC SET LOCATION = 4 WHERE ID = 6;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 7;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 8;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 9;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 10;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 11;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 12;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 13;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 14;".
+        "UPDATE NPC SET LOCATION = 13 WHERE ID = 15;".
+        "UPDATE NPC SET Location = 2 where is = 16;";
+
+    }
+
+    if ($result = $conn->query($sql)) {
+      $this->day = $day;
+    }
+    $this->closeConnection($conn);
   }
 
   public function setDay($day) {
@@ -241,6 +401,7 @@ class DBManager {
   }
 
   public function setHour($hour) {
+    echo "ger hndfghx ";
     $conn = $this->openConnection();
     $sql = "UPDATE TBLTime SET hour = " . $hour . ";";
     if ($result = $conn->query($sql)) {
