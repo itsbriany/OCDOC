@@ -11,6 +11,13 @@
   $day = $dbManager->getDay();
   $hour = $dbManager->getHour();
   $name = $dbManager->getName();
+  $location = $dbManager->getLocation();
+  $avalableTasks = $dbManager->fetchTaskList();
+
+  $rooms = array("IT", "Reception", "Bathroom", "BreakRoom", "CustomerSupport", "HR", "BossOffice", "Lobby", "CopyRoom", "BoardRoom");
+
+
+
 
 
 
@@ -67,6 +74,13 @@
   </script>
 
 </head>
+  <script type='text/javascript'>
+    // Show modal
+    $(document).ready(function(){
+      $('#confermModal').modal('show');
+      $('#modalLast').focus();
+    });
+  </script>
 <div class="modal fade option" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -76,6 +90,9 @@
             <div class="modal-body">
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lectus lorem, aliquet tincidunt erat at, faucibus lobortis massa. Etiam vitae elit euismod, tempor ligula non, elementum dui. Duis luctus leo vitae nibh sagittis sollicitudin.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lectus lorem, aliquet tincidunt erat at, faucibus lobortis massa. Etiam vitae elit euismod, tempor ligula non, elementum dui. Duis luctus leo vitae nibh sagittis sollicitudin.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lectus lorem, aliquet tincidunt erat at, faucibus lobortis massa. Etiam vitae elit euismod, tempor ligula non, elementum dui. Duis luctus leo vitae nibh sagittis sollicitudin.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lectus lorem, aliquet tincidunt erat at, faucibus lobortis massa. Etiam vitae elit euismod, tempor ligula non, elementum dui. Duis luctus leo vitae nibh sagittis sollicitudin.
                 </p>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default btn-success center-block" data-dismiss="modal">OK</button>
@@ -103,13 +120,18 @@
 
     <!--THIS IS WHERE THE ROOM DROP-DOWN IS ------------------------------------------------>
     <div class="roomSelector">
-      <p class="roomSelectorText">What room are you in?</p>
+      <p class="roomSelectorText">What room are you in? <?php echo $rooms[$location] ?></p>
       <div class="btn-group">
         <button type="button" name="name" class="btn btn-default dropdown-toggle roomDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Rooms <span class="caret"></span>
         </button>
 
         <ul class="dropdown-menu">
+          <?php if($rooms): ?>
+            <?php foreach($rooms as $key => $items): ?>
+          <?php echo "<li><a href=\"#\" name=\"location\" value=\"" . ($key +1) . "\" type=\"submit\">" . $items . "</a></li>"; ?>
+            <?php endforeach; ?>
+          <?php endif; ?>
           <li><a href="#" name="location" value="CustomerSupport" type="submit">Lunch Room</a></li>
           <li><a href="#">Secretary's Desk</a></li>
           <li><a href="#">IT Guy's Dungeon</a></li>
