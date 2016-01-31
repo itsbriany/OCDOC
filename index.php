@@ -1,6 +1,54 @@
 <!doctype html>
 <html>
-  <?php $showModal = false; ?>
+  <?php
+  require_once "controllers/dbmanager.php";
+  require_once "models/time.php";
+  require_once "models/player.php";
+
+  $dbManager = new DBManager();
+
+  $dbManager->setPlayer(1);
+  $day = $dbManager->getDay();
+  $hour = $dbManager->getHour();
+  $name = $dbManager->getName();
+
+
+
+
+
+
+
+
+
+/*  $cookie_name = "user";
+  $cookie_value = "John Doe";
+  setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+
+  if(!isset($_COOKIE[$cookie_name])) {
+    echo "Cookie named '" . $cookie_name . "' is not set!";
+  } else {
+    echo "Cookie '" . $cookie_name . "' is set!<br>";
+    echo "Value is: " . $_COOKIE[$cookie_name];
+  }
+
+
+  function test() {
+    echo "<h1>TESTING</h1></br>";
+  }
+
+  function test2() {
+    echo "<h1>TESTING TWO</h1></br>";
+  }
+
+  */
+
+
+
+
+
+  $showModal = false;
+
+  ?>
 <head>
 
     <!--<meta name="apple-mobile-web-app-capable" content="yes">
@@ -12,6 +60,11 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/assets/css/main.css">
+  <script type="text/javascript">
+
+
+
+  </script>
 
 </head>
 <div class="modal fade option" role="dialog">
@@ -42,9 +95,9 @@
 
       <!--THIS IS WHERE THE DAY / HOUR IS SHOWN--------------------------------------------->
       <div class="row">
-        <p class="col-xs-6 currentDay">Day:</p>
+        <p class="col-xs-6 currentDay">Day: <?php echo $day; ?></p>
 
-        <p class="col-xs-6 currentHour"> Hour: <?php echo "testing"; ?></p>
+        <p class="col-xs-6 currentHour"> Hour: <?php echo $hour; ?></p>
       </div>
     </div>
 
@@ -52,12 +105,12 @@
     <div class="roomSelector">
       <p class="roomSelectorText">What room are you in?</p>
       <div class="btn-group">
-        <button type="button" class="btn btn-default dropdown-toggle roomDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button type="button" name="name" class="btn btn-default dropdown-toggle roomDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Rooms <span class="caret"></span>
         </button>
 
         <ul class="dropdown-menu">
-          <li><a href="#">Lunch Room</a></li>
+          <li><a href="#" name="location" value="CustomerSupport" type="submit">Lunch Room</a></li>
           <li><a href="#">Secretary's Desk</a></li>
           <li><a href="#">IT Guy's Dungeon</a></li>
         </ul>

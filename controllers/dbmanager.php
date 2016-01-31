@@ -21,12 +21,13 @@ class DBManager {
 
 
   public function setPlayer($id) {
-
+    $conn = $this->openConnection();
     $sql = "SELECT * FROM Players WHERE Player_ID = " . $id . ";";
     $result = $conn->query($sql);
 
 
-    if ($result->num_rows > 0) {
+    //if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()){
       $this->playerID = (int)$row["Player_ID"];
       $this->turnID = (int)$row["Turn_ID"];
       $this->name = $row["Name"];
@@ -39,7 +40,7 @@ class DBManager {
       $sql = "SELECT Task_ID FROM TBLTODO WHERE Player_ID = " . $id . ";";
       $result = $conn->query($sql);
       while ($row = $result->fetch_assoc()) {
-        array_push($row["Task_ID"]);
+        array_push($this->todo, $row["Task_ID"]);
       }
     }
     return $this->playerID;
@@ -105,8 +106,9 @@ class DBManager {
     $conn = $this->openConnection();
 
     $sql = "SELECT Day FROM TBLTime;";
-    if ($result = $conn->query($sql)) {
-      $this->day = $result["Day"];
+    $result = $conn->query($sql);
+    while ($row = $result->fetch_assoc()) {
+      $this->day = $row["Day"];
     }
 
     $this->closeConnection($conn);
@@ -117,8 +119,10 @@ class DBManager {
     $conn = $this->openConnection();
 
     $sql = "SELECT Hour FROM TBLTime;";
-    if ($result = $conn->query($sql)) {
-      $this->hour = $result["Hour"];
+    $result = $conn->query($sql);
+
+    while ($row = $result->fetch_assoc()) {
+      $this->hour = $row["Hour"];
     }
 
     $this->closeConnection($conn);

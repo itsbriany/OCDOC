@@ -1,6 +1,7 @@
 <?php
 require_once "../models/time.php";
 require_once "../models/player.php";
+
 class GameController {
   private $time = null;
   private $currentPlayer = null;

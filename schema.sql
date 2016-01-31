@@ -167,7 +167,6 @@ VALUES
 -- insert for table `TBLTODO`
 --
 
-
 INSERT INTO TBLTODO
     (Player_ID, Task_ID)
 VALUES
@@ -176,6 +175,17 @@ VALUES
     (2, 1),
     (2, 2),
     (3, 4);
+
+-- --------------------------------------------------------
+
+--
+-- insert for table `TBLTODO`
+--
+
+INSERT INTO TBLTime
+    (Day, Hour)
+VALUES
+    (1, 8);
 
 -- --------------------------------------------------------
 
