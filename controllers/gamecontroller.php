@@ -6,8 +6,9 @@ class GameController {
   private $currentPlayer = null;
 
   public function __construct() {
-    $time = new Time(); 
+    $time = new Time();
     $currentPlayer = new Player();
+
   }
 
   /**
@@ -19,14 +20,14 @@ class GameController {
     //$this->checkPlayerTime();
     // Do a check to see if the hour is up
     // Do a check to see if the day is up
-    $this->time = $newTime; 
+    $this->time = $newTime;
   }
 
   /**
    *  @param $player The player object
    */
   public function setCurrentPlayer($player) {
-    $this->currentPlayer = $player; 
+    $this->currentPlayer = $player;
   }
 
   /**
@@ -34,7 +35,7 @@ class GameController {
    *  @param $player The target Player() object
    */
   private function checkPlayerTime($player) {
-    //if ($player->)  
+    //if ($player->)
   }
 }
 ?>
