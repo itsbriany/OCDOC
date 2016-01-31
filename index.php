@@ -6,15 +6,19 @@
   require_once "models/player.php";
 
   $dbManager = new DBManager();
+  $playerID = 1
 
-  $dbManager->setPlayer(1);
+  $dbManager->setPlayer($playerID);
   $day = $dbManager->getDay();
   $hour = $dbManager->getHour();
   $name = $dbManager->getName();
   $location = $dbManager->getLocation();
-  $avalableTasks = $dbManager->fetchTaskList();
+  $avalableTasks = $dbManager->fetchTaskList($location);
+  $timeLeft = $dbManager->getMinutes();
+
 
   $rooms = array("IT", "Reception", "Bathroom", "BreakRoom", "CustomerSupport", "HR", "BossOffice", "Lobby", "CopyRoom", "BoardRoom");
+
 
 
 
@@ -129,7 +133,7 @@
         <ul class="dropdown-menu">
           <?php if($rooms): ?>
             <?php foreach($rooms as $key => $items): ?>
-          <?php echo "<li><a href=\"#\" name=\"location\" value=\"" . ($key +1) . "\" type=\"submit\">" . $items . "</a></li>"; ?>
+              <?php echo "<li><a href=\"#\" name=\"location\" value=\"" . ($key +1) . "\" type=\"submit\">" . $items . "</a></li>"; ?>
             <?php endforeach; ?>
           <?php endif; ?>
           <li><a href="#" name="location" value="CustomerSupport" type="submit">Lunch Room</a></li>
@@ -142,9 +146,17 @@
 
     <!--THIS IS WHERE THE BUTTONS FOR OPTIONS ARE SHOWN--------------------------------------------->
     <div class="btn-group-vertical mainBody">
-      <button type="button" class="btn userOptions" data-toggle="modal" data-target=".option">Option #1</button>
+      <?php if($avalableTasks): ?>
+        <?php foreach($avalableTasks as $key => $items): ?>
+      <?php
+                         echo $key . " MYARRAY: " . print_r($items);
+                         echo "<button type=\"button\" class=\"btn userOptions\" data-toggle=\"modal\" data-target=\".option\">" . $items["Task"] . "</button>
+  "; ?>
+        <?php endforeach; ?>
+      <?php endif; ?>
+      <!-- <button type="button" class="btn userOptions" data-toggle="modal" data-target=".option">Option #1</button>
       <button type="button" class="btn userOptions" data-toggle="modal" data-target=".option">Option #2</button>
-      <button type="button" class="btn userOptions" data-toggle="modal" data-target=".option">Option #3</button>
+      <button type="button" class="btn userOptions" data-toggle="modal" data-target=".option">Option #3</button> -->
     </div>
 
     <div class="mainFooter">

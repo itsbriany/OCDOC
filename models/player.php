@@ -1,5 +1,5 @@
 <?php
-require_once "../models/room.php";
+//require_once "../models/room.php";
 class Player {
 
   private $minutesLeft = 60;
@@ -8,7 +8,7 @@ class Player {
   private $location = Room::Lobby;
 
   const TimeToMoveBetweenRooms = 5;
-  
+
 
   /*
      @param $taskID The task to do
