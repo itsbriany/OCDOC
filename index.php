@@ -5,6 +5,8 @@
   require_once "models/time.php";
   require_once "models/player.php";
 
+  $assetsDirectory = "assets/images/";
+
   $dbManager = new DBManager();
   $playerID = 1;
 
@@ -55,26 +57,31 @@
 
   <?php if($avalableTasks): ?>
   <?php foreach($avalableTasks as $key => $items): ?>
-  <?php echo "<div class=\"modal fade option\" id=\"modal" . ($key + 1) . "\" role=\"dialog\">
-  <form id=\"" . $key . "\" method=\"post\">
-    <div class=\"modal-dialog\">
-        <div class=\"modal-content\">
-            <div class=\"modal-header\">
-                <img src=\"https://placehold.it/350x150\" class=\".img-responsive\" style=\"width:100%\" alt=\"Image\">
-            </div>
-          <div class=\"modal-body\">
-            <p>";
-              echo $avalableTasks[$key]["Description"];
-            echo "</p>
-            <div class=\"modal-footer\">
-            <input type=\"hidden\" name=\"taskid\" value=\"" . $items["Task_ID"] . "\">
-      <input type=\"submit\" name=\"task\" value=\"ok\"><br>
+  <?php 
+    $image = "https://placehold.it/350x150";
+    if(isset($items["Name"])) {
+      $image = $assetsDirectory . strtolower($items["Name"]) . ".png"; 
+    } 
+    echo "<div class=\"modal fade option\" id=\"modal" . ($key + 1) . "\" role=\"dialog\">
+    <form id=\"" . $key . "\" method=\"post\">
+      <div class=\"modal-dialog\">
+          <div class=\"modal-content\">
+              <div class=\"modal-header\">
+                  <img src=\"" . $image . "\" class=\".img-responsive\" style=\"width:100%\" alt=\"Image\">
+              </div>
+            <div class=\"modal-body\">
+              <p>";
+                echo $avalableTasks[$key]["Description"];
+              echo "</p>
+              <div class=\"modal-footer\">
+              <input type=\"hidden\" name=\"taskid\" value=\"" . $items["Task_ID"] . "\">
+              <input type=\"submit\" name=\"task\" value=\"ok\"><br>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </form>
-  </div>";  ?>
+      </form>
+    </div>";  ?>
   <?php endforeach; ?>
   <?php endif; ?>
 <body>
