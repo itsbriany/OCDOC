@@ -143,7 +143,7 @@ INSERT INTO Tasks
     (Task, Description, TimeConsumption, TaskList_ID, Req_Task, Req_Room)
 VALUES
     ("Get coffie","get some coffie for me please!", 15,"SecretaryTask", 0, 4),
-    ("watch the office","can you please watch the office for me!", 60,"SecretaryTask", 0, 1),
+    ("watch the office","can you please watch the office for me!", 60,"SecretaryTask", 0, 4),
     ("answer the phone","you hear the phone right and pick it up.", 20,"ITTask", 1, 5),
     ("answer the phone","you hear the phone right and pick it up.", 20,"BossTask", 2, 3),
     ("answer the phone","samig.", 20,"LunchRoomTask", 0, 7);

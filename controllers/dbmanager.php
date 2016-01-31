@@ -31,8 +31,11 @@ class DBManager {
     $conn = $this->openConnection();
     // Get task time
     $taskTime = $this->getTaskTime($conn, $taskID);
+    echo "task time complete </br>!";
     $playerTime = $this->getPlayerMinutes($conn);
+    echo "player time complete </br>!";
     $newMinutes = $playerTime - $taskTime;
+    echo "new amount complete </br>!";
     if ($newMinutes <= 0) {
       $newMinutes = 60;
       // TODO Turn complete
@@ -40,7 +43,9 @@ class DBManager {
     }
     // Subtract player time
     $this->updatePlayerMinutes($conn, $newMinutes);
-    $this->closeConnection();
+    $updatedPlayerMins = $this->getPlayerMinutes($conn);
+    $this->closeConnection($conn);
+    return $updatedPlayerMins;
   }
 
   /**
@@ -212,7 +217,7 @@ class DBManager {
 
   public function setDay($day) {
     $conn = $this->openConnection();
-    $sql = "UPDATE TBLTime SET Day = " . $day . " WHERE ID = 1;";
+    $sql = "UPDATE TBLTime SET Day = " . $day . ";";
     if ($result = $conn->query($sql)) {
        $this->day = $day;
     }
@@ -221,7 +226,7 @@ class DBManager {
 
   public function setHour($hour) {
     $conn = $this->openConnection();
-    $sql = "UPDATE TBLTime SET hour = " . $hour . " WHERE ID = 1;";
+    $sql = "UPDATE TBLTime SET hour = " . $hour . ";";
     if ($result = $conn->query($sql)) {
       $this->hour = $hour;
     }

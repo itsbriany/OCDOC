@@ -13,8 +13,9 @@
   print_r($_POST);
 
   if (isset($_POST["task"])) {
-    echo "yayyyyyyyyyy";
-    $dbManager->doTaskForPerson($_POST["task"]);
+    $dbManager->doTaskForPerson($_POST["taskid"]);
+  } else {
+    echo "IM NOT SET";
   }
 
   $day = $dbManager->getDay();
@@ -25,10 +26,6 @@
   $timeLeft = $dbManager->getMinutes();
 
   $rooms = array("IT", "Reception", "Bathroom", "BreakRoom", "CustomerSupport", "HR", "BossOffice", "Lobby", "CopyRoom", "BoardRoom");
-
-
-
-
 
 
   $showModal = false;
@@ -74,7 +71,8 @@
               echo $avalableTasks[$key]["Description"];
             echo "</p>
             <div class=\"modal-footer\">
-              <button type=\"submit\" form=\"" . $key . "\" class=\"btn btn-default btn-success center-block\" data-dismiss=\"modal\" name=\"task\" value=\"" . $key . "\">OK</button>
+            <input type=\"hidden\" name=\"taskid\" value=\"" . $items["Task_ID"] . "\">
+      <input type=\"submit\" name=\"task\" value=\"ok\"><br>
             </div>
           </div>
         </div>
@@ -84,7 +82,9 @@
   <?php endforeach; ?>
   <?php endif; ?>
 
-  <div class="modal fade option" role="dialog">
+  <!--
+<button type=\"submit\" form=\"" . $key . "\" class=\"btn btn-default btn-success center-block\" data-dismiss=\"modal\" name=\"task\" value=\"" . $key . "\">OK</button>
+<div class="modal fade option" role="dialog">
     <form action="post">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -104,7 +104,7 @@
     </form>
 
   </div>
-
+-->
 <body>
 
 <div class="container-fluid" style="align-content: center;">
