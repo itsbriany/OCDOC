@@ -95,16 +95,10 @@ class DBManager {
       return;
     }
     while ($row = $result->fetch_assoc()) {
-<<<<<<< HEAD
-
-    }
-    $taskListID = $row["TaskList_ID "];
-    return $taskListID;
-=======
       $taskListID = $row["TaskList_ID"];
       return $taskListID;
     }
->>>>>>> origin/master
+
   }
 
   public function getDay() {
@@ -176,10 +170,5 @@ class DBManager {
   private function errorMsg($conn) {
     die ("Failed to close connection: ". $conn->connect_errno . "</br>");
   }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> origin/master
 }
 ?>
