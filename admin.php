@@ -8,7 +8,9 @@ if (isset($_POST['redirect'])){
 } else if (isset($_POST['redirect2'])) {
   $dbManager->setHour($_POST["hour"]);
 } else if (isset($_POST['redirect3'])) {
-  $result = "ASP.Net? Awesome Possum!!!";
+  print_r($_POST);
+  $dbManager->setHour($_POST["redirect3"]);
+  $dbManager->changeHour($_POST["redirect3"]);
 }
 
 $browser = $_SERVER['HTTP_USER_AGENT'];
@@ -30,9 +32,35 @@ $browser = $_SERVER['HTTP_USER_AGENT'];
         <input type="submit" name="redirect2" value="Set hour"><br>
       </p>
       <p>
-        <input type="submit" name="redirect3" value="Move NPC to location (NPC is a name, location is a number between 1-10 inclusive)"><br>
+        <input type="submit" name="redirect3" value="8"><br>
       </p>
-
+      <p>
+        <input type="submit" name="redirect3" value="9"><br>
+      </p>
+      <p>
+        <input type="submit" name="redirect3" value="10"><br>
+      </p>
+      <p>
+        <input type="submit" name="redirect3" value="11"><br>
+      </p>
+      <p>
+        <input type="submit" name="redirect3" value="12"><br>
+      </p>
+      <p>
+        <input type="submit" name="redirect3" value="1"><br>
+      </p>
+      <p>
+        <input type="submit" name="redirect3" value="2"><br>
+      </p>
+      <p>
+        <input type="submit" name="redirect3" value="3"><br>
+      </p>
+      <p>
+        <input type="submit" name="redirect3" value="4"><br>
+      </p>
+      <p>
+        <input type="submit" name="redirect3" value="5"><br>
+      </p>
     </form>
   </body>
 </html>
