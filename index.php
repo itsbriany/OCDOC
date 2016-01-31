@@ -142,8 +142,30 @@
             <?php endforeach; ?>
             <?php endif; ?>
           </select>
-
         </div>
+        <script> 
+  $(document).ready(function() {
+    $("#sel1").change(function() {
+            $.ajax({
+                url: 'select.php',
+                type: 'POST',
+                data: {sel1: $('#sel1').find(":selected").text()}
+    }).done(function(response) {
+      $(".roomSelectorText").text("You are currently in: " + response);
+
+
+      $.ajax({
+        url: 'select.php',
+        type: 'POST',
+        data: {blah: 'blah'} 
+      }).done(function(response) {
+        $(".userMinutes").text("You have " + response + " minutes left.");
+      });
+      
+    });
+    }); 
+  });
+        </script>
       </div>
 
       <!-- THIS IS WHERE THE BUTTONS FOR OPTIONS ARE SHOWN -->
