@@ -1,0 +1,165 @@
+@font-face {
+  font-family: 'Roboto', sans-serif;
+  src: url(https://fonts.googleapis.com/css?family=Roboto);
+}
+@font-face {
+  font-family: 'Roboto Slab', serif;
+  src: url(https://fonts.googleapis.com/css?family=Roboto+Slab);
+}
+​
+/*MAIN PAGE*/
+​
+.mainContainer{
+  font-family: "Roboto Slab";
+  background-color: #667799;
+  align-content: center;
+  width: 100%;
+  /* position: fixed; */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10% 5%;
+  text-align: center;
+  min-height: 100%;
+  background-size: 100% !important;
+}
+.mainHeader{
+  margin-top: 1%;
+  margin-bottom: 8%;
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+}
+.currentDay{
+  font-size: 38px;
+  padding-left: 5%;
+}
+.currentHour{
+  font-size: 38px;
+  border-left: 1px solid black;
+}
+.currentLocation{
+  ​
+}
+.mainBody{
+  width: 92%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 15px;
+  margin-bottom: 5%;
+  ​
+}
+.userOptionsContainer{
+  font-family: 'Roboto Slab', serif;
+  font-size: xx-large;
+  font-weight: 300;
+}
+.userOptions{
+  font-family: "Roboto Slab";
+  font-weight: 500;
+  font-size: 24px;
+  margin-top: 10%;
+  padding: 8%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: palegoldenrod;
+  height: 100px;
+  white-space: normal;
+}
+.timeNeeded{
+  font-family: "Roboto Slab";
+  font-weight: 300;
+  font-size: 18px;
+  white-space: normal;
+}
+​
+.roomSelectorText{
+  font-size: 24px;
+  margin-bottom: 5%;
+}
+.userMinutes{
+  margin-top: 2%;
+  margin-bottom: 4%;
+  font-family: 'Roboto', serif;
+  font-size: 20px;
+  font-weight: 100 !important;
+  ​
+}
+.roomDropDown{
+  width: 92%;
+}
+​
+/*PROFILE / INFO PAGE*/
+​
+.profile{
+  background-color: #222;
+  font-weight: 100;
+  color: white;
+  margin-top: 16px;
+  height: 500px;
+}
+.upperProfile{
+  padding-top:5px;
+}
+.lowerProfile{
+  margin-top: 8%;
+}
+.profileName{
+  font-family: "Roboto";
+  text-align: center;
+  font-size: xx-large;
+  font-weight: 300;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+.profileIcon{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.profileJob{
+  text-align: center;
+  font-size: large;
+  font-weight: 100;
+  margin-top:6%;
+  font-family: "Roboto Slab";
+}
+.profileCarousel{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.carousel-control.left, .carousel-control.right {
+  background-image: none
+}
+.carouselTitle{
+  font-family: "Roboto";
+  font-weight: 700;
+  color: #667799;
+  font-size: 36px;
+  margin-bottom: 4%;
+}
+.carouselObjects{
+  font-family: 'Roboto Slab', serif;
+  font-weight: 100;
+  font-size: medium;
+}
+.modal-footer{
+  align-content: center;
+  text-align: center;
+}
+.btnClose{
+  float:right;
+  margin-right: 20%;
+}
+.modalBody{
+  padding-top: 3%;
+  padding-bottom: 4%;
+  font-family: 'Roboto Slab', serif;
+  font-weight: normal;
+  font-size: 16px;
+  text-align: left;
+}

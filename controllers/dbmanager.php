@@ -33,7 +33,7 @@ class DBManager {
     echo "task time complete </br>!";
     $playerTime = $this->getPlayerMinutes($conn);
     if (!$playerTime) {
-      return; 
+      return;
     }
     echo "player time complete </br>!";
     $newMinutes = $playerTime - $taskTime;
@@ -68,7 +68,7 @@ class DBManager {
     $conn = $this->openConnection();
     $playerOldMinutes = $this->getPlayerMinutes($conn);
     if (!$playerOldMinutes) {
-      return; 
+      return;
     }
     $currentMinutes = $playerOldMinutes - self::TimeToMoveBetweenRooms;
     if ($currentMinutes <= 0) {
@@ -143,7 +143,7 @@ class DBManager {
   }
 
   public function moveNPC($NPCName, $location) {
-    $conn = $this->openConnection(); 
+    $conn = $this->openConnection();
     $sql = "UPDATE NPC SET Location = " . $location . " WHERE Name = '". $NPCName ."';";
     $conn->query($sql);
     $this->closeConnection($conn);
@@ -225,6 +225,10 @@ class DBManager {
 
     $this->closeConnection($conn);
     return $this->hour;
+  }
+
+  public function changeHour() {
+
   }
 
   public function setDay($day) {
