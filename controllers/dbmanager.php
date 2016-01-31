@@ -267,9 +267,6 @@ class DBManager {
     if ($row = $result->fetch_assoc()) {
       $oldMinutes = $row["Minutes"];
     }
-    if (!$oldMinutes) {
-      die ($this->className . ": could not find Minutes for Player with ID " . $this->playerID);
-    }
     return $oldMinutes;
   }
 

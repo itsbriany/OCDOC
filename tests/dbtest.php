@@ -4,17 +4,18 @@
   require_once '../models/room.php';
 
   $dbManager = new DBManager();
-  $location = Room::IT;
+  $location = Room::BreakRoom;
+
+  $playerID = $dbManager->setPlayer(1);
 
   // Get the tasks based off a location
-  // $locationTaskList = $dbManager->fetchTaskList($location);
-  // var_dump($locationTaskList);
+  $locationTaskList = $dbManager->fetchTaskList($location);
+  var_dump($locationTaskList);
   // echo "</br>";
 
-  $playerID = $dbManager->setPlayer(2);
   echo "Player ID: " . $playerID . "</br>";
 
-  $dbManager->move($location);
+  // $dbManager->move($location);
 ?>
 
 <html>
