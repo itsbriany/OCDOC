@@ -90,7 +90,6 @@
         $image = $assetsDirectory . "it.png"; 
       } 
     } 
-    echo "BOOTSTRAP!";
     echo "<div class=\"modal fade option\" id=\"modal" . ($key + 1) . "\" role=\"dialog\">
     <form id=\"" . $key . "\" method=\"post\">
       <div class=\"modal-dialog\">
