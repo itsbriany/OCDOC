@@ -1,5 +1,8 @@
 <?php
+require_once "../models/player.php";
 class DBManager {
+
+  private $className = "DBManager";
 
   // conection data
   private $servername = "localhost";
@@ -19,6 +22,38 @@ class DBManager {
   private $todo = array();
   private $completed = array();
 
+
+  /**
+   *  Moves the player to the specified location
+   *  Locations are represented by an integer
+   */
+  public function move($location) {
+    // Sanitize the location
+    if ($location < 1) {
+      return;
+    }
+    if ($location > 10) {
+      $location = ($location % 10) + 1;
+    }
+    if (!$this->playerID) {
+      die ($className . ": Could not move player due to missing player ID!"); 
+    }
+    $conn = $this->openConnection();
+    $playerOldMinutes = $this->getPlayerMinutes($conn);
+    $currentMinutes = $playerOldMinutes - Player::TimeToMoveBetweenRooms; 
+    if ($currentMinutes < 0) {
+      $currentMinutes = 0; 
+    }
+
+    // Consume the player's time
+    $this->consumePlayerMinutes($conn, $currentMinutes);
+
+    // Query the database to consume the person's time
+    // Based on the location and task, consume the person's time
+    $sql = "UPDATE Players SET Location = '" . $location . "' WHERE Player_ID = " . $this->playerID . ";";
+    $conn->query($sql);
+    $this->closeConnection($conn);
+  }
 
   public function setPlayer($id) {
     $conn = $this->openConnection();
@@ -131,7 +166,6 @@ class DBManager {
 
   public function setDay($day) {
     $conn = $this->openConnection();
-
     $sql = "UPDATE TBLTime SET Day = " . $day . " WHERE ID = 1;";
     if ($result = $conn->query($sql)) {
        $this->day = $day;
@@ -141,7 +175,6 @@ class DBManager {
 
   public function setHour($hour) {
     $conn = $this->openConnection();
-
     $sql = "UPDATE TBLTime SET hour = " . $hour . " WHERE ID = 1;";
     if ($result = $conn->query($sql)) {
       $this->hour = $hour;
@@ -159,6 +192,24 @@ class DBManager {
     }
     echo "Connected successfully</br>";
     return $conn;
+  }
+
+  private function getPlayerMinutes($conn) {
+    $sql = "SELECT Minutes FROM Players WHERE Player_ID = '" . $this->playerID . "';";
+    $result = $conn->query($sql);
+    $currentMinutes = null;
+    if ($row = $result->fetch_assoc()) {
+      $oldMinutes = $row["Minutes"];
+    }
+    if (!$oldMinutes) {
+      die ($this->className . ": could not find Minutes for Player with ID " . $this->playerID); 
+    }
+    return $oldMinutes;
+  }
+
+  private function consumePlayerMinutes($conn, $newPlayerMinutes) {
+    $sql = "UPDATE Players SET Minutes = " . $newPlayerMinutes . " WHERE ID = " . $this->playerID .";";
+    $conn->query($sql);
   }
 
   private function closeConnection($conn) {

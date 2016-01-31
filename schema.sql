@@ -35,6 +35,7 @@ CREATE TABLE `Players` (
   `Turn_ID` int(11) NOT NULL,
   `Name` VARCHAR(50) NOT NULL,
   `Location` int(11) NOT NULL,
+  `Minutes` int(11) NOT NULL DEFAULT 60,
    PRIMARY KEY (Player_ID)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

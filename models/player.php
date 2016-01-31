@@ -1,18 +1,23 @@
 <?php
+require_once "../models/room.php";
 class Player {
 
   private $minutesLeft = 60;
   private $todoList = array();
   private $complete = 0;
-  private $timeToMoveBetweenRooms = 5;
+  private $location = Room::Lobby;
 
-  /**
-   *  Moves the player to the specified location
-   *  Locations are represented by an integer
-   */
-  public function move($location) {
-    $this->minutesLeft -= $this->timeToMoveBetweenRooms;
-    // Get the location
+  const TimeToMoveBetweenRooms = 5;
+  
+
+  /*
+     @param $taskID The task to do
+     @return The response from completing the task
+  */
+  public function doTask($taskID) {
+    // Query the database here to get the message associated with the given taskID
+    // Subtract the task's time consumption from the global time
+    return "Completed task " . $taskID . "</br>";
   }
 
   public function addMinutes($ammount) {
@@ -44,16 +49,6 @@ class Player {
 
   public function getCompleteRating() {
     return $this->complete;
-  }
-
-  /*
-     @param $taskID The task to do
-     @return The response from completing the task
-  */
-  public function doTask($taskID) {
-    // Query the database here to get the message associated with the given taskID
-    // Subtract the task's time consumption from the global time
-    return "Completed task " . $taskID . "</br>";
   }
 
 }
